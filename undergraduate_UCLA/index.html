@@ -24,10 +24,42 @@
             padding: 20px;
         }
 
+        /* Navigation Bar (from the landing page) */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+            z-index: 10;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
         /* Header Section */
         header {
             width: 100%;
             text-align: center;
+            margin-top: 80px;
             margin-bottom: 40px;
         }
 
@@ -51,6 +83,14 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0; /* Start invisible */
+            transform: translateY(30px); /* Slightly lower to create a "slide-up" effect */
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .project.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .project h2 {
@@ -73,6 +113,7 @@
         .content .file {
             margin-bottom: 20px;
             width: 30%;
+            transition: transform 0.3s ease;
         }
 
         .file a {
@@ -88,6 +129,7 @@
 
         .file a:hover {
             background-color: #555;
+            transform: scale(1.05);
         }
 
         /* Responsiveness */
@@ -105,9 +147,10 @@
 </head>
 <body>
 
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar (same as landing page) -->
     <nav>
         <ul>
+            <li><a href="../index.html">Home</a></li>
             <li><a href="#capstone">Capstone</a></li>
             <li><a href="#asme-combat-robotics">ASME Combat Robotics</a></li>
             <li><a href="#fsae">FSAE</a></li>
@@ -132,44 +175,4 @@
                 <a href="assets/code/code_sample.py" download>Download Code</a>
             </div>
             <div class="file">
-                <a href="assets/pdfs/capstone_presentation.pdf" download>Download Presentation</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ASME Combat Robotics -->
-    <section id="asme-combat-robotics" class="project">
-        <h2>ASME Combat Robotics</h2>
-        <p>Brief description of the ASME Combat Robotics project. Highlight the key design challenges and innovations you implemented.</p>
-        <div class="content">
-            <div class="file">
-                <a href="assets/models/cad_model_2.stl" download>Download CAD Model</a>
-            </div>
-            <div class="file">
-                <a href="assets/code/code_sample_robotics.py" download>Download Code</a>
-            </div>
-            <div class="file">
-                <a href="assets/pdfs/asme_presentation.pdf" download>Download Presentation</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FSAE -->
-    <section id="fsae" class="project">
-        <h2>FSAE</h2>
-        <p>Description of your FSAE experience and key contributions. Focus on your technical approach, teamwork, and results achieved.</p>
-        <div class="content">
-            <div class="file">
-                <a href="assets/models/cad_model_3.stl" download>Download CAD Model</a>
-            </div>
-            <div class="file">
-                <a href="assets/code/code_sample_fsae.py" download>Download Code</a>
-            </div>
-            <div class="file">
-                <a href="assets/pdfs/fsae_presentation.pdf" download>Download Presentation</a>
-            </div>
-        </div>
-    </section>
-
-</body>
-</html>
+                <a href="assets/pdfs/capstone
