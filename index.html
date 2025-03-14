@@ -5,17 +5,95 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me - My Portfolio</title>
+    <link rel="stylesheet" href="landing/assets/style.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Header styling */
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #777;
+        }
+
+        /* About Me Section */
+        #about-me {
+            text-align: center;
+        }
+
+        #about-me img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        #about-me p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Basic Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Portfolio</h1>
-        <p>A Mechanical Engineer passionate about robotics, design, and innovation.</p>
-    </header>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1>Welcome to My Portfolio</h1>
+            <p>Mechanical Engineering | Robotics | Design</p>
+        </header>
 
-    <section id="about-me">
-        <h2>About Me</h2>
-        <img src="landing/assets/images/Myface.jpg" alt="My Photo" width="300" style="border-radius: 50%;">
-        <p>Hello! I'm [Your Name], a mechanical engineer with experience in robotics systems, design optimization, and functional modeling. Explore my work across undergraduate, graduate, and professional projects.</p>
-    </section>
+        <!-- About Me Section -->
+        <section id="about-me">
+            <!-- Replace 'Myface.jpg' with the GIF of your machining work -->
+            <img src="landing/assets/images/Myface.jpg" alt="About Me Image">
+            <p>Hello! I'm Shubh Raval, a mechanical engineer with a focus on robotics systems, manufacturing, test engineering, and design optimization. Explore my work across undergraduate, graduate, professional, and personal projects.</p>
+        </section>
+    </div>
 </body>
 </html>
