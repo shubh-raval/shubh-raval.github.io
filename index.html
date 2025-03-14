@@ -23,6 +23,7 @@
             align-items: center;
             height: 100vh;
             padding: 20px;
+            flex-direction: column;
         }
 
         .container {
@@ -32,6 +33,38 @@
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             animation: fadeIn 1.5s ease-in-out;
+            margin-top: 100px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #333;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        nav.hidden {
+            transform: translateY(-100%);
         }
 
         /* Header styling */
@@ -81,6 +114,17 @@
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav id="navbar">
+        <ul>
+            <li><a href="#undergraduate">Undergraduate</a></li>
+            <li><a href="#graduate">Graduate</a></li>
+            <li><a href="#professional">Professional</a></li>
+            <li><a href="#personal">Personal</a></li>
+            <li><a href="#contact">Contact Me</a></li>
+        </ul>
+    </nav>
+
     <div class="container">
         <!-- Header Section -->
         <header>
@@ -92,8 +136,23 @@
         <section id="about-me">
             <!-- Replace 'Myface.jpg' with the GIF of your machining work -->
             <img src="landing/assets/images/Myface.jpg" alt="About Me Image">
-            <p>Hello! I'm Shubh Raval, a mechanical engineer with a focus on robotics systems, manufacturing, test engineering, and design optimization. Explore my work across undergraduate, graduate, professional, and personal projects.</p>
+            <p>Hello! I'm [Your Name], a mechanical engineer with a focus on robotics systems, functional modeling, and design optimization. Explore my work across undergraduate, graduate, and professional projects.</p>
         </section>
     </div>
+
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', function() {
+            let currentScroll = window.scrollY;
+            if (currentScroll > lastScrollTop && currentScroll > 100) {
+                navbar.classList.add('hidden'); // Hide nav on scroll down
+            } else if (currentScroll < lastScrollTop || currentScroll < window.innerHeight * 0.25) {
+                navbar.classList.remove('hidden'); // Show nav on scroll up or if near top
+            }
+            lastScrollTop = currentScroll;
+        });
+    </script>
 </body>
 </html>
