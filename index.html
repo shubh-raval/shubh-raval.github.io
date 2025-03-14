@@ -22,12 +22,11 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            padding: 20px;
-            flex-direction: column;
+            padding: 0;
             overflow: hidden;
         }
 
-        /* Fullscreen Video Background - Left Half */
+        /* Video Background - Left Half */
         .video-background {
             position: absolute;
             top: 0;
@@ -39,230 +38,66 @@
             z-index: -1;
         }
 
-        /* Navigation Bar */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: #333;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-            z-index: 1000;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-        }
-
-        nav.hidden {
-            transform: translateY(-100%);
-        }
-
-        /* Container for content on right side */
+        /* Main Container */
         .container {
-            position: relative;
             display: flex;
             width: 100%;
             height: 100%;
-            max-width: 1200px;
-            z-index: 1;
         }
 
-        /* Text Animation */
-        .welcome-message {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2.5rem;
-            color: #333;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        /* Header styling for welcome message */
-        header {
-            text-align: left;
-            flex: 1;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        header p {
-            font-size: 1.1rem;
-            color: #777;
-        }
-
-        /* About Me Section */
-        #about-me {
-            text-align: left;
-            flex: 1;
-            padding-left: 20px;
-        }
-
-        #about-me img {
-            width: 200px;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-        }
-
-        #about-me p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        /* Resume Section */
-        #resume {
+        /* About Me Section (Right) */
+        .right-side {
+            position: relative;
             flex: 1;
             padding: 20px;
-            overflow: hidden;
+            z-index: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
+            flex-direction: column;
+            text-align: center;
         }
 
-        #resume iframe {
-            width: 100%;
-            height: 100%;
-            max-width: 900px;
-            max-height: 600px;
-            border: none;
+        /* About Me Image */
+        .right-side img {
+            width: 200px; /* Adjust size of the image */
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
 
-        /* Download Button */
-        .download-btn {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            display: none;
+        /* About Me Text */
+        .right-side h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 10px;
         }
 
-        .download-btn.show {
-            display: block;
-        }
-
-        /* Basic Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .right-side p {
+            font-size: 1.1rem;
+            color: #777;
+            line-height: 1.6;
         }
 
     </style>
 </head>
 <body>
 
-    <!-- Video Background -->
+    <!-- Video Background (Left side) -->
     <video class="video-background" autoplay loop muted>
         <source src="landing/assets/videos/machining.mov" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
-    <!-- Navigation Bar -->
-    <nav id="navbar">
-        <ul>
-            <li><a href="#undergraduate">Undergraduate</a></li>
-            <li><a href="#graduate">Graduate</a></li>
-            <li><a href="#professional">Professional</a></li>
-            <li><a href="#personal">Personal</a></li>
-            <li><a href="#contact">Contact Me</a></li>
-        </ul>
-    </nav>
-
-    <!-- Main Container -->
+    <!-- Main Content Container -->
     <div class="container">
-        <!-- Left Side (Video Background) -->
-        <div class="video-background"></div>
-
-        <!-- Right Side (Content) -->
-        <div style="flex: 1; position: relative;">
-            <!-- Welcome Message -->
-            <div class="welcome-message">
-                <h1>Welcome to My Portfolio</h1>
-                <p>Mechanical Engineering</p>
-            </div>
-
-            <!-- About Me Section -->
-            <section id="about-me">
-                <img src="landing/assets/images/Myface.jpg" alt="About Me Image">
-                <p>Howdy I'm Shubh Raval, a mechanical engineer with a focus on robotics, manufacturing, test engineering, and project management. Explore my work across undergraduate, graduate, professional, and personal projects.</p>
-            </section>
-
-            <!-- Resume Section -->
-            <section id="resume">
-                <iframe src="landing/assets/pdfs/ShubhRaval_Resume_2025.pdf" title="Resume"></iframe>
-                <!-- Download Button -->
-                <button class="download-btn" id="download-btn" onclick="downloadResume()">Download Resume</button>
-            </section>
+        <!-- Right Side (Intro Section) -->
+        <div class="right-side">
+            <img src="landing/assets/images/Myface.jpg" alt="About Me Image">
+            <h1>Welcome to My Portfolio</h1>
+            <p>Hello! I'm [Your Name], a mechanical engineer with a focus on robotics systems, functional modeling, and design optimization. Explore my work across undergraduate, graduate, and professional projects.</p>
         </div>
     </div>
-
-    <!-- JavaScript for Scroll Effect and Resume Download -->
-    <script>
-        // Scroll Effect for Navigation Bar
-        let lastScrollTop = 0;
-        const navbar = document.getElementById('navbar');
-
-        window.addEventListener('scroll', function() {
-            let currentScroll = window.scrollY;
-            if (currentScroll > lastScrollTop && currentScroll > 100) {
-                navbar.classList.add('hidden'); // Hide nav on scroll down
-            } else if (currentScroll < lastScrollTop || currentScroll < window.innerHeight * 0.25) {
-                navbar.classList.remove('hidden'); // Show nav on scroll up or if near top
-            }
-            lastScrollTop = currentScroll;
-        });
-
-        // Download Resume Button Show on Scroll
-        let resumeSection = document.getElementById('resume');
-        let downloadBtn = document.getElementById('download-btn');
-
-        window.addEventListener('scroll', function() {
-            let resumePosition = resumeSection.getBoundingClientRect().top;
-            if (resumePosition <= window.innerHeight * 0.5) {
-                downloadBtn.classList.add('show');
-            } else {
-                downloadBtn.classList.remove('show');
-            }
-        });
-
-        // Function to download resume
-        function downloadResume() {
-            let link = document.createElement('a');
-            link.href = 'landing/assets/pdfs/ShubhRaval_Resume2025.pdf';
-            link.download = 'ShubhRaval_Resume2025.pdf';
-            link.click();
-        }
-    </script>
 
 </body>
 </html>
