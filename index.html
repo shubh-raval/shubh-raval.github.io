@@ -20,11 +20,11 @@
             background-color: #f4f4f4;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             height: 100vh;
             padding: 20px;
             flex-direction: column;
-            overflow: hidden; /* Prevent scrolling */
+            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
 
         /* Fullscreen Video Background */
@@ -67,7 +67,7 @@
         }
 
         nav.hidden {
-            transform: translateY(-100%); /* Hide nav when scrolling down */
+            transform: translateY(-100%);
         }
 
         /* Container for text and image */
@@ -120,37 +120,41 @@
             line-height: 1.6;
         }
 
-        /* Resume Tile Styling */
+        /* Resume Tile */
         .resume-tile {
-            position: relative;
-            max-width: 500px;
-            margin-top: 30px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            padding: 2rem;
+            background: #fff;
             border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: transform 0.3s ease-in-out;
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto;
         }
 
-        .resume-tile:hover {
-            transform: scale(1.05);
+        .resume-tile h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
 
-        .resume-tile a {
-            display: block;
+        .resume-tile p {
             font-size: 1.2rem;
-            text-decoration: none;
-            color: #333;
-            margin-bottom: 10px;
+            margin-bottom: 1rem;
         }
 
-        .download-icon {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5rem;
-            cursor: pointer;
+        .download-btn {
+            background: #333;
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #555;
         }
 
         /* Basic Animation */
@@ -198,23 +202,21 @@
         <section id="about-me">
             <!-- Image Placeholder for Your Face -->
             <img src="landing/assets/images/Myface.jpg" alt="About Me Image">
-            <p>Hey, I'm Shubh Raval, a mechanical engineer with a wide range of experiences in robots, manufacturing, test engineering, and project management. Explore my work across undergraduate, graduate, professional, and personal projects.</p>
+            <p>Hello! I'm Shubh Raval, a mechanical engineer a ranged of experiences in robots, manufacturing, test engineering, and project management. Explore my work across undergraduate, graduate, professional, personal projects.</p>
         </section>
     </div>
 
-    <!-- Resume Tile Section -->
-    <div class="resume-tile" id="resume-tile">
-        <a href="landing/assets/pdfs/ShubhRaval_Resume_2025.pdf" target="_blank">View My Resume</a>
-        <span class="download-icon" id="download-icon">&#8595;</span> <!-- Download Icon -->
-    </div>
+    <!-- Resume Tile -->
+    <section class="resume-tile">
+        <h2>My Resume</h2>
+        <p>Click the button below to download my resume, or scroll down to see the full version:</p>
+        <a href="landing/assets/pdf/ShubhRavalResume.pdf" class="download-btn" download>Download Resume</a>
+    </section>
 
-    <!-- JavaScript for Scroll Effect and Download -->
+    <!-- JavaScript for Scroll Effect -->
     <script>
         let lastScrollTop = 0;
         const navbar = document.getElementById('navbar');
-        const downloadIcon = document.getElementById('download-icon');
-        const resumeTile = document.getElementById('resume-tile');
-        let isResumeDownloaded = false;
 
         window.addEventListener('scroll', function() {
             let currentScroll = window.scrollY;
@@ -224,29 +226,6 @@
                 navbar.classList.remove('hidden'); // Show nav on scroll up or if near top
             }
             lastScrollTop = currentScroll;
-        });
-
-        // Show nav if mouse is within 25% of the top of the screen
-        window.addEventListener('mousemove', function(e) {
-            if (e.clientY < window.innerHeight * 0.25) {
-                navbar.classList.remove('hidden');
-            }
-        });
-
-        // Download functionality for resume
-        downloadIcon.addEventListener('click', function() {
-            if (!isResumeDownloaded) {
-                // Trigger download of resume
-                const a = document.createElement('a');
-                a.href = 'landing/assets/pdfs/ShubhRaval_Resume2025';
-                a.download = 'ShubhRaval_Resume2025.pdf';
-                a.click();
-                isResumeDownloaded = true;
-                downloadIcon.innerHTML = '✔'; // Change icon to checkmark after download
-            } else {
-                // If already downloaded, prompt user or reset the download icon
-                alert('Your resume is already downloaded!');
-            }
         });
     </script>
 
@@ -261,7 +240,7 @@
     2. Navigation Bar:
         - The navigation bar is fixed at the top of the screen.
         - It contains links that jump to different sections on the page.
-        - It is hidden when the user scrolls down and shown again when they scroll up or if the mouse is near the top 25% of the screen.
+        - It is hidden when the user scrolls down and shown again when they scroll up or the mouse is within 25% of the screen height.
 
     3. Container:
         - The container holds the main content and is placed in the center of the screen.
@@ -277,9 +256,9 @@
         - The image has specific dimensions (200px width, 300px height) and rounded corners.
 
     6. Resume Tile:
-        - A tile with a "View My Resume" link is placed below the main content.
-        - A download icon appears on hover and allows the user to download the resume.
-        - Once downloaded, the icon changes to a checkmark.
+        - The resume tile includes a title, description, and a button to download the resume.
+        - It also allows scrolling down to view the full resume, while the download button remains available.
+        - The button has a hover effect for better interactivity.
 
     7. Responsiveness:
         - The layout is designed to be responsive. The video background will stretch to the full width and height of the screen, while the content inside the container will remain well-organized even on smaller screens.
@@ -291,9 +270,8 @@
         - A fade-in animation is applied to the container when it loads.
 
     9. JavaScript Scroll Effect:
-        - The navigation bar will hide when scrolling down and appear when scrolling up or if the mouse is near the top 25% of the screen.
+        - The navigation bar will hide when scrolling down and appear when scrolling up or if the mouse is within 25% of the screen height.
         - This is achieved by monitoring the scroll position and toggling the 'hidden' class on the navbar.
-        - The resume download icon triggers a download of the resume and changes to a checkmark after being clicked.
     -->
 </body>
 </html>
