@@ -67,7 +67,7 @@
         }
 
         nav.hidden {
-            transform: translateY(-100%);
+            transform: translateY(-100%); /* Hide nav when scrolling down */
         }
 
         /* Container for text and image */
@@ -120,6 +120,39 @@
             line-height: 1.6;
         }
 
+        /* Resume Tile Styling */
+        .resume-tile {
+            position: relative;
+            max-width: 500px;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .resume-tile:hover {
+            transform: scale(1.05);
+        }
+
+        .resume-tile a {
+            display: block;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .download-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
         /* Basic Animation */
         @keyframes fadeIn {
             from {
@@ -158,21 +191,30 @@
         <!-- Header Section -->
         <header>
             <h1>Welcome to My Portfolio</h1>
-            <p>Mechanical Engineering | Robotics | Design</p>
+            <p>Mechanical Engineering</p>
         </header>
 
         <!-- About Me Section -->
         <section id="about-me">
             <!-- Image Placeholder for Your Face -->
             <img src="landing/assets/images/Myface.jpg" alt="About Me Image">
-            <p>Hello! I'm [Your Name], a mechanical engineer with a focus on robotics systems, functional modeling, and design optimization. Explore my work across undergraduate, graduate, and professional projects.</p>
+            <p>Hey, I'm Shubh Raval, a mechanical engineer with a wide range of experiences in robots, manufacturing, test engineering, and project management. Explore my work across undergraduate, graduate, professional, and personal projects.</p>
         </section>
     </div>
 
-    <!-- JavaScript for Scroll Effect -->
+    <!-- Resume Tile Section -->
+    <div class="resume-tile" id="resume-tile">
+        <a href="landing/assets/pdfs/ShubhRaval_Resume_2025.pdf" target="_blank">View My Resume</a>
+        <span class="download-icon" id="download-icon">&#8595;</span> <!-- Download Icon -->
+    </div>
+
+    <!-- JavaScript for Scroll Effect and Download -->
     <script>
         let lastScrollTop = 0;
         const navbar = document.getElementById('navbar');
+        const downloadIcon = document.getElementById('download-icon');
+        const resumeTile = document.getElementById('resume-tile');
+        let isResumeDownloaded = false;
 
         window.addEventListener('scroll', function() {
             let currentScroll = window.scrollY;
@@ -182,6 +224,29 @@
                 navbar.classList.remove('hidden'); // Show nav on scroll up or if near top
             }
             lastScrollTop = currentScroll;
+        });
+
+        // Show nav if mouse is within 25% of the top of the screen
+        window.addEventListener('mousemove', function(e) {
+            if (e.clientY < window.innerHeight * 0.25) {
+                navbar.classList.remove('hidden');
+            }
+        });
+
+        // Download functionality for resume
+        downloadIcon.addEventListener('click', function() {
+            if (!isResumeDownloaded) {
+                // Trigger download of resume
+                const a = document.createElement('a');
+                a.href = 'landing/assets/pdfs/ShubhRaval_Resume2025';
+                a.download = 'ShubhRaval_Resume2025.pdf';
+                a.click();
+                isResumeDownloaded = true;
+                downloadIcon.innerHTML = '✔'; // Change icon to checkmark after download
+            } else {
+                // If already downloaded, prompt user or reset the download icon
+                alert('Your resume is already downloaded!');
+            }
         });
     </script>
 
@@ -196,7 +261,7 @@
     2. Navigation Bar:
         - The navigation bar is fixed at the top of the screen.
         - It contains links that jump to different sections on the page.
-        - It is hidden when the user scrolls down and shown again when they scroll up.
+        - It is hidden when the user scrolls down and shown again when they scroll up or if the mouse is near the top 25% of the screen.
 
     3. Container:
         - The container holds the main content and is placed in the center of the screen.
@@ -211,18 +276,24 @@
         - Below the image is a short introduction about the user.
         - The image has specific dimensions (200px width, 300px height) and rounded corners.
 
-    6. Responsiveness:
+    6. Resume Tile:
+        - A tile with a "View My Resume" link is placed below the main content.
+        - A download icon appears on hover and allows the user to download the resume.
+        - Once downloaded, the icon changes to a checkmark.
+
+    7. Responsiveness:
         - The layout is designed to be responsive. The video background will stretch to the full width and height of the screen, while the content inside the container will remain well-organized even on smaller screens.
         - The video should adjust to the left side, with the image and text on the right.
 
-    7. Styling:
+    8. Styling:
         - Flexbox is used for layout organization.
         - A subtle shadow is applied to the container for visual appeal.
         - A fade-in animation is applied to the container when it loads.
 
-    8. JavaScript Scroll Effect:
-        - The navigation bar will hide when scrolling down and appear when scrolling up.
+    9. JavaScript Scroll Effect:
+        - The navigation bar will hide when scrolling down and appear when scrolling up or if the mouse is near the top 25% of the screen.
         - This is achieved by monitoring the scroll position and toggling the 'hidden' class on the navbar.
+        - The resume download icon triggers a download of the resume and changes to a checkmark after being clicked.
     -->
 </body>
 </html>
