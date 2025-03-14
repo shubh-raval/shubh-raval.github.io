@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undergraduate Projects - My Portfolio</title>
+    <link rel="stylesheet" href="undergraduate_UCLA/assets/style.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Header Section */
+        header {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        /* Project Section */
+        .project {
+            width: 80%;
+            margin-bottom: 60px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .project p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .project .content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .content .file {
+            margin-bottom: 20px;
+            width: 30%;
+        }
+
+        .file a {
+            display: block;
+            background: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .file a:hover {
+            background-color: #555;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .project .content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .content .file {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#capstone">Capstone</a></li>
+            <li><a href="#asme-combat-robotics">ASME Combat Robotics</a></li>
+            <li><a href="#fsae">FSAE</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header Section -->
+    <header>
+        <img src="undergraduate_UCLA/assets/images/your-lateral-image.jpg" alt="Lateral Image">
+        <h1>Undergraduate Projects</h1>
+    </header>
+
+    <!-- Capstone Project -->
+    <section id="capstone" class="project">
+        <h2>Capstone Project</h2>
+        <p>Brief description of the Capstone project. Focus on the goals, your approach, and key accomplishments.</p>
+        <div class="content">
+            <div class="file">
+                <a href="undergraduate_UCLA/assets/models/cad_model_1.stl" download>Download CAD Model 1</a>
+            </div>
+            <div class="file">
+                <a href="undergraduate_UCLA/assets/code/code_sample.py" download>Download Code</a>
+            </div>
+            <div class="file">
+                <a href="undergraduate_UCLA/assets/pdfs/capstone_presentation.pdf" download>Download Presentation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASME Combat Robotics -->
+    <section id="asme-combat-robotics" class="project">
+        <h2>ASME Combat Robotics</h2>
+        <p>Brief description of the ASME Combat Robotics project. Highlight the key design challenges and innovations you implemented.</p>
+        <div class="content">
+            <div class="file">
+                <a href="undergraduate_UCLA/assets/models/cad_model_2.stl" download>Download CAD Model</a>
+            </div>
+            <div class="file">
+                <a href="undergraduate_UCLA/assets/code/code_sample_robotics.py" download>Download Code</a>
+            </div>
+            <div class="file">
+                <a href="undergraduate_UCLA/assets/pdfs/asme_presentation.pdf" download>Download Presentation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FSAE -->
+    <section id="fsae" class="project">
+        <h2>FSAE</h2>
+        <p>Description of your FSAE experience and key contributions. Focus on your technical approach, teamwork, and results achieved.</p>
+        <div class="content">
+            <div class="file">
+                <a href="undergraduate_UCLA/assets/models/cad_model_3.stl" download>Download CAD Model</a>
+            </div>
+            <div class="file">
+                <a href="undergraduate_UCLA/assets/code/code_sample_fsae.py" download>Download Code</a>
+            </div>
+            <div class="file">
+                <a href="undergraduate_UCLA/assets/pdfs/fsae_presentation.pdf" download>Download Presentation</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
