@@ -1,277 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - My Portfolio</title>
-    <link rel="stylesheet" href="landing/assets/style.css">
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me - My Portfolio</title>
+  <link rel="stylesheet" href="landing/assets/style.css">
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            color: #333;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            height: 100vh;
-            padding: 20px;
-            flex-direction: column;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
-        }
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      background-color: #f4f4f4;
+      /* Allow scrolling for dynamic content */
+      overflow-x: hidden;
+    }
 
-        /* Fullscreen Video Background */
-        .video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.75;
-            z-index: -1; /* Keeps video in the background */
-        }
+    /* Navigation Bar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #333;
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+      z-index: 1000;
+      transition: transform 0.3s ease-in-out;
+    }
 
-        /* Navigation Bar */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: #333;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-            z-index: 1000;
-            transition: transform 0.3s ease-in-out;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-        }
+    nav.hidden {
+      transform: translateY(-100%);
+    }
 
-        nav.hidden {
-            transform: translateY(-100%);
-        }
+    /* Landing Section */
+    #landing {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+    }
 
-        /* Container for text and image */
-        .container {
-            position: relative;
-            max-width: 900px;
-            background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-top: 100px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    /* Video Background for Landing */
+    #landing .video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.75;
+      z-index: -1;
+    }
 
-        /* Header styling */
-        header {
-            text-align: left;
-            flex: 1;
-        }
+    /* Landing Content - Centered Welcome Text */
+    #landing .landing-content {
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
 
-        header h1 {
-            font-size: 2.5rem;
-            color: #333;
-        }
+    #landing .landing-content h1 {
+      font-size: 3rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
 
-        header p {
-            font-size: 1.1rem;
-            color: #777;
-        }
+    #landing .landing-content p {
+      font-size: 1.5rem;
+      color: #fff;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    }
 
-        /* About Me Section */
-        #about-me {
-            text-align: left;
-            flex: 1;
-            padding-left: 20px;
-        }
+    /* Main Content Section */
+    #content {
+      padding: 100px 20px 50px; /* Extra top padding to clear fixed nav */
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-        #about-me img {
-            width: 200px;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-        }
+    /* Container for About Me */
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
 
-        #about-me p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
+    /* Header within Container */
+    .container header {
+      flex: 1 1 100%;
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-        /* Resume Tile */
-        .resume-tile {
-            margin-top: 50px;
-            padding: 2rem;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            width: 100%;
-            max-width: 900px;
-            margin: 20px auto;
-        }
+    .container header h1 {
+      font-size: 2.5rem;
+      color: #333;
+    }
 
-        .resume-tile h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
+    .container header p {
+      font-size: 1.1rem;
+      color: #777;
+    }
 
-        .resume-tile p {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
+    /* About Me Section */
+    #about-me {
+      flex: 1 1 100%;
+      text-align: center;
+    }
 
-        .download-btn {
-            background: #333;
-            color: white;
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
+    #about-me img {
+      width: 200px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
 
-        .download-btn:hover {
-            background-color: #555;
-        }
+    #about-me p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
 
-        /* Basic Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    /* Resume Tile */
+    .resume-tile {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin-bottom: 50px;
+    }
 
-    </style>
+    .resume-tile h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .resume-tile p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .download-btn {
+      background: #333;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background-color: #555;
+    }
+
+    /* Basic Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
+  <!-- Navigation Bar -->
+  <nav id="navbar">
+    <ul>
+      <li><a href="#undergraduate">Undergraduate</a></li>
+      <li><a href="#graduate">Graduate</a></li>
+      <li><a href="#professional">Professional</a></li>
+      <li><a href="#personal">Personal</a></li>
+      <li><a href="#contact">Contact Me</a></li>
+    </ul>
+  </nav>
 
-    <!-- Video Background -->
+  <!-- Landing Section with Video Background -->
+  <section id="landing">
     <video class="video-background" autoplay loop muted>
-        <source src="landing/assets/videos/machining.mov" type="video/mp4">
-        Your browser does not support the video tag.
+      <source src="landing/assets/videos/machining.mov" type="video/mp4">
+      Your browser does not support the video tag.
     </video>
+    <div class="landing-content">
+      <h1>Welcome to My Portfolio</h1>
+      <p>Mechanical Engineering</p>
+    </div>
+  </section>
 
-    <!-- Navigation Bar -->
-    <nav id="navbar">
-        <ul>
-            <li><a href="#undergraduate">Undergraduate</a></li>
-            <li><a href="#graduate">Graduate</a></li>
-            <li><a href="#professional">Professional</a></li>
-            <li><a href="#personal">Personal</a></li>
-            <li><a href="#contact">Contact Me</a></li>
-        </ul>
-    </nav>
-
-    <!-- Container for Content -->
+  <!-- Main Content Section (scrollable) -->
+  <section id="content">
+    <!-- Container for About Me -->
     <div class="container">
-        <!-- Header Section -->
-        <header>
-            <h1>Welcome to My Portfolio</h1>
-            <p>Mechanical Engineering</p>
-        </header>
-
-        <!-- About Me Section -->
-        <section id="about-me">
-            <!-- Image Placeholder for Your Face -->
-            <img src="landing/assets/images/Myface.jpg" alt="About Me Image">
-            <p>Hello! I'm Shubh Raval, a mechanical engineer a ranged of experiences in robots, manufacturing, test engineering, and project management. Explore my work across undergraduate, graduate, professional, personal projects.</p>
-        </section>
+      <header>
+        <h1>About Me</h1>
+        <p>Hello! I'm Shubh Raval, a mechanical engineer with a range of experiences in robotics, manufacturing, test engineering, and project management.</p>
+      </header>
+      <section id="about-me">
+        <img src="landing/assets/images/Myface.jpg" alt="About Me Image">
+        <p>Explore my work across undergraduate, graduate, professional, and personal projects.</p>
+      </section>
     </div>
 
-    <!-- Resume Tile -->
+    <!-- Resume Tile with Download Option and Embedded Resume -->
     <section class="resume-tile">
-        <h2>My Resume</h2>
-        <p>Click the button below to download my resume, or scroll down to see the full version:</p>
-        <a href="landing/assets/pdf/ShubhRavalResume.pdf" class="download-btn" download>Download Resume</a>
+      <h2>My Resume</h2>
+      <p>Click the button below to download my resume, or scroll down to view the full version:</p>
+      <a href="landing/assets/pdf/ShubhRavalResume.pdf" class="download-btn" download>Download Resume</a>
+      <!-- Embedded resume for full view -->
+      <iframe src="landing/assets/pdf/ShubhRavalResume.pdf" style="width:100%; height:600px; border:none; margin-top:20px;"></iframe>
     </section>
+  </section>
 
-    <!-- JavaScript for Scroll Effect -->
-    <script>
-        let lastScrollTop = 0;
-        const navbar = document.getElementById('navbar');
+  <!-- JavaScript for Navbar Scroll Effect -->
+  <script>
+    let lastScrollTop = 0;
+    const navbar = document.getElementById('navbar');
 
-        window.addEventListener('scroll', function() {
-            let currentScroll = window.scrollY;
-            if (currentScroll > lastScrollTop && currentScroll > 100) {
-                navbar.classList.add('hidden'); // Hide nav on scroll down
-            } else if (currentScroll < lastScrollTop || currentScroll < window.innerHeight * 0.25) {
-                navbar.classList.remove('hidden'); // Show nav on scroll up or if near top
-            }
-            lastScrollTop = currentScroll;
-        });
-    </script>
+    window.addEventListener('scroll', function() {
+      let currentScroll = window.scrollY;
+      if (currentScroll > lastScrollTop && currentScroll > 100) {
+        navbar.classList.add('hidden'); // Hide nav on scroll down
+      } else if (currentScroll < lastScrollTop || currentScroll < window.innerHeight * 0.25) {
+        navbar.classList.remove('hidden'); // Show nav on scroll up or if near top
+      }
+      lastScrollTop = currentScroll;
+    });
+  </script>
 
-    <!-- Extended Pseudocode Readme (Commented Out) -->
-    <!--
-    Pseudocode Documentation:
-    1. Video Background:
-        - A video is used as the background on the full width and height of the screen.
-        - It is set to autoplay, loop, and muted with an opacity of 75%.
-        - The video will be set to cover the entire background without distortion, maintaining aspect ratio.
-
-    2. Navigation Bar:
-        - The navigation bar is fixed at the top of the screen.
-        - It contains links that jump to different sections on the page.
-        - It is hidden when the user scrolls down and shown again when they scroll up or the mouse is within 25% of the screen height.
-
-    3. Container:
-        - The container holds the main content and is placed in the center of the screen.
-        - It contains a flexible layout with two sections: the header and the about me section.
-
-    4. Header Section:
-        - The header contains the main title and a subtitle that introduces the portfolio.
-        - It is aligned to the left and spans the width of the container.
-
-    5. About Me Section:
-        - The section includes an image of the user (the placeholder image can be replaced with a profile picture).
-        - Below the image is a short introduction about the user.
-        - The image has specific dimensions (200px width, 300px height) and rounded corners.
-
-    6. Resume Tile:
-        - The resume tile includes a title, description, and a button to download the resume.
-        - It also allows scrolling down to view the full resume, while the download button remains available.
-        - The button has a hover effect for better interactivity.
-
-    7. Responsiveness:
-        - The layout is designed to be responsive. The video background will stretch to the full width and height of the screen, while the content inside the container will remain well-organized even on smaller screens.
-        - The video should adjust to the left side, with the image and text on the right.
-
-    8. Styling:
-        - Flexbox is used for layout organization.
-        - A subtle shadow is applied to the container for visual appeal.
-        - A fade-in animation is applied to the container when it loads.
-
-    9. JavaScript Scroll Effect:
-        - The navigation bar will hide when scrolling down and appear when scrolling up or if the mouse is within 25% of the screen height.
-        - This is achieved by monitoring the scroll position and toggling the 'hidden' class on the navbar.
-    -->
+  <!-- Extended Pseudocode Readme (Commented Out) -->
+  <!--
+  Pseudocode Documentation:
+  1. Landing Section:
+      - The landing section occupies the full viewport height (100vh) and contains the video background and centered welcome text.
+      - The video background is set to autoplay, loop, muted, and has an opacity of 75%.
+      - The landing content (welcome message) is centered both vertically and horizontally using flexbox.
+  
+  2. Navigation Bar:
+      - The navigation bar is fixed at the top of the page and contains navigation links.
+      - It hides when the user scrolls down and reappears when scrolling up or when the mouse is within the top 25% of the screen.
+  
+  3. Main Content Section:
+      - The main content follows the landing section and is fully scrollable.
+      - It includes a container for the About Me section (with a header, image, and description).
+  
+  4. Resume Tile:
+      - The resume tile provides a title, a short description, and a download button that triggers the download of the resume PDF.
+      - An embedded iframe displays the full resume, allowing the user to scroll within the resume area.
+  
+  5. Responsiveness & Styling:
+      - The layout is designed to be responsive. The landing section occupies 100vh, while the main content section scrolls naturally.
+      - Flexbox is used to center and arrange elements.
+      - A fade-in animation is defined (to be used if needed for smooth appearance).
+  
+  6. JavaScript Scroll Effect:
+      - JavaScript monitors the scroll position to hide the navigation bar when scrolling down, and reveal it when scrolling up or if the mouse is near the top.
+  -->
 </body>
 </html>
