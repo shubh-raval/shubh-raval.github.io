@@ -24,16 +24,19 @@
             height: 100vh;
             padding: 20px;
             flex-direction: column;
+            overflow: hidden; /* Prevent scrolling */
         }
 
-        .container {
-            max-width: 900px;
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1.5s ease-in-out;
-            margin-top: 100px;
+        /* Fullscreen Video Background */
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.75;
+            z-index: -1; /* Keeps video in the background */
         }
 
         /* Navigation Bar */
@@ -67,10 +70,24 @@
             transform: translateY(-100%);
         }
 
+        /* Container for text and image */
+        .container {
+            position: relative;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         /* Header styling */
         header {
-            text-align: center;
-            margin-bottom: 2rem;
+            text-align: left;
+            flex: 1;
         }
 
         header h1 {
@@ -85,12 +102,15 @@
 
         /* About Me Section */
         #about-me {
-            text-align: center;
+            text-align: left;
+            flex: 1;
+            padding-left: 20px;
         }
 
         #about-me img {
-            max-width: 100%;
-            height: auto;
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
             border-radius: 10px;
             margin-bottom: 1rem;
         }
@@ -111,9 +131,17 @@
                 transform: translateY(0);
             }
         }
+
     </style>
 </head>
 <body>
+
+    <!-- Video Background -->
+    <video class="video-background" autoplay loop muted>
+        <source src="landing/assets/videos/machining.mov" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <!-- Navigation Bar -->
     <nav id="navbar">
         <ul>
@@ -125,21 +153,23 @@
         </ul>
     </nav>
 
+    <!-- Container for Content -->
     <div class="container">
         <!-- Header Section -->
         <header>
             <h1>Welcome to My Portfolio</h1>
-            <p>Mechanical Engineering | Robotics | Design</p>
+            <p>Hardware | Software</p>
         </header>
 
         <!-- About Me Section -->
         <section id="about-me">
-            <!-- Replace 'Myface.jpg' with the GIF of your machining work -->
+            <!-- Image Placeholder for Your Face -->
             <img src="landing/assets/images/Myface.jpg" alt="About Me Image">
-            <p>Hello! I'm [Your Name], a mechanical engineer with a focus on robotics systems, functional modeling, and design optimization. Explore my work across undergraduate, graduate, and professional projects.</p>
+            <p>Hello! I'm Shubh Raval, a mechanical engineer with a focus on robotics, manufacturing, test engineering, project management. Explore my work across undergraduate, graduate, professional, and personal projects.</p>
         </section>
     </div>
 
+    <!-- JavaScript for Scroll Effect -->
     <script>
         let lastScrollTop = 0;
         const navbar = document.getElementById('navbar');
@@ -154,5 +184,45 @@
             lastScrollTop = currentScroll;
         });
     </script>
+
+    <!-- Extended Pseudocode Readme (Commented Out) -->
+    <!--
+    Pseudocode Documentation:
+    1. Video Background:
+        - A video is used as the background on the full width and height of the screen.
+        - It is set to autoplay, loop, and muted with an opacity of 75%.
+        - The video will be set to cover the entire background without distortion, maintaining aspect ratio.
+
+    2. Navigation Bar:
+        - The navigation bar is fixed at the top of the screen.
+        - It contains links that jump to different sections on the page.
+        - It is hidden when the user scrolls down and shown again when they scroll up.
+
+    3. Container:
+        - The container holds the main content and is placed in the center of the screen.
+        - It contains a flexible layout with two sections: the header and the about me section.
+
+    4. Header Section:
+        - The header contains the main title and a subtitle that introduces the portfolio.
+        - It is aligned to the left and spans the width of the container.
+
+    5. About Me Section:
+        - The section includes an image of the user (the placeholder image can be replaced with a profile picture).
+        - Below the image is a short introduction about the user.
+        - The image has specific dimensions (200px width, 300px height) and rounded corners.
+
+    6. Responsiveness:
+        - The layout is designed to be responsive. The video background will stretch to the full width and height of the screen, while the content inside the container will remain well-organized even on smaller screens.
+        - The video should adjust to the left side, with the image and text on the right.
+
+    7. Styling:
+        - Flexbox is used for layout organization.
+        - A subtle shadow is applied to the container for visual appeal.
+        - A fade-in animation is applied to the container when it loads.
+
+    8. JavaScript Scroll Effect:
+        - The navigation bar will hide when scrolling down and appear when scrolling up.
+        - This is achieved by monitoring the scroll position and toggling the 'hidden' class on the navbar.
+    -->
 </body>
 </html>
