@@ -1,0 +1,20 @@
+your-website/
+├── index.html                # Main HTML file that loads all components
+├── styles/
+│   ├── main.css              # Global styles and variables
+│   ├── navbar.css            # Navigation styles
+│   ├── hero.css              # Hero section styles
+│   ├── about.css             # About section styles
+│   └── resume.css            # Resume section styles
+├── js/
+│   └── main.js               # Main JavaScript for loading components
+├── components/
+│   ├── navbar.html           # Navigation HTML
+│   ├── hero.html             # Hero section HTML
+│   ├── about.html            # About section HTML
+│   └── resume.html           # Resume section HTML
+└── landing/
+    └── assets/               # Your existing assets folder
+        ├── images/
+        ├── videos/
+        └── pdfs/
