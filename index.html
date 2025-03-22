@@ -4,286 +4,825 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Me - My Portfolio</title>
-  <link rel="stylesheet" href="landing/assets/style.css">
+  <title>Shubh Raval - Mechanical Engineer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    /* General Reset */
+    /* ===== GENERAL RESET ===== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      color: #333;
-      background-color: #f4f4f4;
-      /* Allow scrolling for dynamic content */
-      overflow-x: hidden;
+    :root {
+      /* Modern color scheme */
+      --primary-color: #2d4059; /* Deep blue */
+      --secondary-color: #ea5455; /* Accent red */
+      --background-light: #f6f6f6;
+      --text-dark: #333;
+      --text-light: #f5f5f5;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      
+      /* Typography */
+      --header-font: 'Montserrat', sans-serif;
+      --body-font: 'Roboto', sans-serif;
+      
+      /* Animations */
+      --transition-slow: 0.5s ease;
+      --transition-fast: 0.3s ease;
     }
 
-    /* Navigation Bar */
-    nav {
+    body {
+      font-family: var(--body-font);
+      color: var(--text-dark);
+      background-color: var(--background-light);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--header-font);
+      font-weight: 600;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .navbar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: #333;
-      color: white;
-      padding: 1rem 0;
-      text-align: center;
+      padding: 1.5rem;
       z-index: 1000;
-      transition: transform 0.3s ease-in-out;
+      transition: background-color var(--transition-fast), 
+                  padding var(--transition-fast),
+                  box-shadow var(--transition-fast),
+                  transform 0.3s ease-in-out;
+      mix-blend-mode: difference; /* Makes nav visible against any background */
     }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
+    .navbar.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 1rem 1.5rem;
+      box-shadow: var(--shadow);
+      mix-blend-mode: normal;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 1.1rem;
-    }
-
-    nav.hidden {
+    .navbar.hidden {
       transform: translateY(-100%);
     }
 
-    /* Landing Section */
-    #landing {
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: var(--header-font);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--text-light);
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: color var(--transition-fast);
+    }
+
+    .navbar.scrolled .logo {
+      color: var(--primary-color);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      position: relative;
+      transition: color var(--transition-fast);
+    }
+
+    .navbar.scrolled .nav-links a {
+      color: var(--text-dark);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--secondary-color);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: var(--text-light);
+      transition: background-color var(--transition-fast);
+    }
+
+    .navbar.scrolled .menu-toggle span {
+      background-color: var(--text-dark);
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
       position: relative;
       height: 100vh;
       width: 100%;
+      display: flex;
       overflow: hidden;
     }
 
-    /* Video Background for Landing */
-    #landing .video-background {
+    /* Split screen design */
+    .hero-split {
+      position: relative;
+      width: 50%;
+      height: 100%;
+    }
+
+    /* Left side: Video background */
+    .hero-video {
+      position: relative;
+      overflow: hidden;
+      background-color: var(--primary-color);
+    }
+
+    .hero-video::after {
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      opacity: 0.75;
-      z-index: -1;
+      background: linear-gradient(135deg, rgba(45, 64, 89, 0.7) 0%, rgba(45, 64, 89, 0.4) 100%);
+      z-index: 1;
     }
 
-    /* Landing Content - Centered Welcome Text */
-    #landing .landing-content {
-      position: relative;
-      height: 100%;
+    .video-background {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      opacity: 0.85;
+    }
+
+    /* Right side: Text content */
+    .hero-content {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding: 0 5rem;
+      background-color: var(--background-light);
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards 0.3s;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: var(--text-dark);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards 0.6s;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background-color: var(--secondary-color);
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: transform var(--transition-fast),
+                  box-shadow var(--transition-fast);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards 0.9s;
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(234, 84, 85, 0.3);
+    }
+
+    /* Animated scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      text-align: center;
-      padding: 0 20px;
+      opacity: 0;
+      animation: fadeIn 1s forwards 1.5s;
+      z-index: 2;
     }
 
-    #landing .landing-content h1 {
-      font-size: 3rem;
-      color: #fff;
+    .scroll-indicator span {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      letter-spacing: 2px;
       margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
     }
 
-    #landing .landing-content p {
-      font-size: 1.5rem;
-      color: #fff;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    .scroll-indicator .mouse {
+      width: 30px;
+      height: 50px;
+      border: 2px solid white;
+      border-radius: 20px;
+      position: relative;
     }
 
-    /* Main Content Section */
-    #content {
-      padding: 100px 20px 50px; /* Extra top padding to clear fixed nav */
-      max-width: 900px;
+    .scroll-indicator .mouse::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      height: 6px;
+      background-color: white;
+      border-radius: 50%;
+      animation: scrollAnimation 2s infinite;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about {
+      padding: 6rem 2rem;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    /* Container for About Me */
-    .container {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background-color: var(--secondary-color);
+    }
+
+    .about-container {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      margin-top: 2rem;
+    }
+
+    .about-image {
+      flex: 0 0 40%;
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      transition: transform var(--transition-slow);
+    }
+
+    .about-image::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 100%;
+      height: 100%;
+      border: 3px solid var(--secondary-color);
+      border-radius: 8px;
+      z-index: -1;
+      transition: transform var(--transition-slow);
+    }
+
+    .about-image:hover img {
+      transform: translateY(-10px);
+    }
+
+    .about-image:hover::before {
+      transform: translate(10px, 10px);
+    }
+
+    .about-content {
+      flex: 1;
+    }
+
+    .about-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .skills {
+      margin-top: 2rem;
+    }
+
+    .skills h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .skills-container {
       display: flex;
       flex-wrap: wrap;
-      margin-bottom: 50px;
+      gap: 1rem;
     }
 
-    /* Header within Container */
-    .container header {
-      flex: 1 1 100%;
+    .skill-tag {
+      padding: 0.5rem 1rem;
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      border-radius: 30px;
+      font-size: 0.9rem;
+      transition: transform var(--transition-fast);
+    }
+
+    .skill-tag:hover {
+      transform: translateY(-5px);
+    }
+
+    /* ===== RESUME SECTION ===== */
+    .resume-section {
+      padding: 6rem 2rem;
+      background-color: #f0f0f0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .resume-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(45, 64, 89, 0.05) 0%, rgba(234, 84, 85, 0.05) 100%);
+      z-index: 0;
+    }
+
+    .resume-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .resume-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 3rem;
       text-align: center;
-      margin-bottom: 20px;
     }
 
-    .container header h1 {
+    .resume-card h2 {
       font-size: 2.5rem;
-      color: #333;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
     }
 
-    .container header p {
-      font-size: 1.1rem;
-      color: #777;
-    }
-
-    /* About Me Section */
-    #about-me {
-      flex: 1 1 100%;
-      text-align: center;
-    }
-
-    #about-me img {
-      width: 200px;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 1rem;
-    }
-
-    #about-me p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-
-    /* Resume Tile */
-    .resume-tile {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .resume-tile h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .resume-tile p {
+    .resume-card p {
       font-size: 1.2rem;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .download-btn {
-      background: #333;
-      color: white;
+    .resume-preview {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
       padding: 1rem 2rem;
-      font-size: 1rem;
-      border-radius: 5px;
+      background-color: var(--primary-color);
+      color: var(--text-light);
       text-decoration: none;
-      transition: background-color 0.3s ease;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: transform var(--transition-fast),
+                  box-shadow var(--transition-fast);
+      margin: 0 0.5rem;
     }
 
-    .download-btn:hover {
-      background-color: #555;
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     }
 
-    /* Basic Animation */
+    .btn-secondary {
+      background-color: var(--secondary-color);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes scrollAnimation {
+      0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      75% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    /* Reveal animations on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media screen and (max-width: 1024px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+      
+      .hero-content {
+        padding: 0 3rem;
+      }
+      
+      .about-container {
+        gap: 3rem;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      /* Change hero to stack on mobile */
+      .hero {
+        flex-direction: column;
+      }
+      
+      .hero-split {
+        width: 100%;
+      }
+      
+      .hero-video {
+        height: 40vh;
+      }
+      
+      .hero-content {
+        height: 60vh;
+        padding: 3rem 2rem;
+        align-items: center;
+        text-align: center;
+      }
+      
+      /* Navigation adjustments */
+      .menu-toggle {
+        display: flex;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100vh;
+        background-color: var(--primary-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        transition: right var(--transition-slow);
+      }
+      
+      .nav-links.active {
+        right: 0;
+      }
+      
+      .nav-links li {
+        margin: 1.5rem 0;
+      }
+      
+      /* About section stacks on mobile */
+      .about-container {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      
+      .about-image {
+        flex: 0 0 100%;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      
+      .about-content {
+        text-align: center;
+      }
+      
+      .skills-container {
+        justify-content: center;
+      }
+      
+      /* Resume section adjustments */
+      .resume-card {
+        padding: 2rem 1rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .about-content h2 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
   <!-- Navigation Bar -->
-  <nav id="navbar">
-    <ul>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">SR</a>
+      
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      
+      <ul class="nav-links" id="nav-links">
         <li><a href="undergraduate_UCLA/index.html">Undergraduate</a></li>
-      <li><a href="#graduate">Graduate</a></li>
-      <li><a href="#professional">Professional</a></li>
-      <li><a href="#personal">Personal</a></li>
-      <li><a href="#contact">Contact Me</a></li>
-    </ul>
+        <li><a href="#graduate">Graduate</a></li>
+        <li><a href="#professional">Professional</a></li>
+        <li><a href="#personal">Personal</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <!-- Landing Section with Video Background -->
-  <section id="landing">
-    <video class="video-background" autoplay loop muted>
-      <source src="landing/assets/videos/machining.mov" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="landing-content">
-      <h1>Welcome to My Portfolio</h1>
-      <p>Mechanical Engineering</p>
+  <!-- Hero Section with Split Screen -->
+  <section class="hero">
+    <div class="hero-split hero-video">
+      <video class="video-background" autoplay loop muted>
+        <source src="landing/assets/videos/machining.mov" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    
+    <div class="hero-split hero-content">
+      <h1 class="hero-title">Shubh Raval</h1>
+      <p class="hero-subtitle">Mechanical Engineer specializing in robotics, manufacturing, and project management.</p>
+      <a href="#about" class="hero-cta">Learn More</a>
+    </div>
+    
+    <div class="scroll-indicator">
+      <span>SCROLL</span>
+      <div class="mouse"></div>
     </div>
   </section>
 
-  <!-- Main Content Section (scrollable) -->
-  <section id="content">
-    <!-- Container for About Me -->
-    <div class="container">
-      <header>
-        <h1>About Me</h1>
-        <p>Hello! I'm Shubh Raval, a mechanical engineer with a range of experiences in robotics, manufacturing, test engineering, and project management.</p>
-      </header>
-      <section id="about-me">
-        <img src="landing/assets/images/Myface.jpg" alt="About Me Image">
-        <p>Explore my work across undergraduate, graduate, professional, and personal projects.</p>
-      </section>
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2 class="section-title reveal">About Me</h2>
+    
+    <div class="about-container">
+      <div class="about-image reveal">
+        <img src="landing/assets/images/Myface.jpg" alt="Shubh Raval">
+      </div>
+      
+      <div class="about-content reveal">
+        <h2>Hello, I'm Shubh</h2>
+        <p>I'm a mechanical engineer with a passion for innovation and problem-solving. My experience spans across robotics, manufacturing, test engineering, and project management.</p>
+        <p>Throughout my career, I've developed a keen interest in designing and implementing mechanical systems that improve efficiency and solve real-world problems.</p>
+        
+        <div class="skills">
+          <h3>My Skills</h3>
+          <div class="skills-container">
+            <span class="skill-tag">Robotics</span>
+            <span class="skill-tag">Manufacturing</span>
+            <span class="skill-tag">CAD Design</span>
+            <span class="skill-tag">Project Management</span>
+            <span class="skill-tag">Test Engineering</span>
+            <span class="skill-tag">Prototyping</span>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!-- Resume Tile with Download Option and Embedded Resume -->
-    <section class="resume-tile">
-      <h2>My Resume</h2>
-      <p>Click the button below to download my resume, or scroll down to view the full version:</p>
-      <a href="landing/assets/pdfs/ShubhRaval_Resume_2025.pdf" class="download-btn" download>Download Resume</a>
-      <!-- Embedded resume for full view -->
-      <iframe src="landing/assets/pdfs/ShubhRaval_Resume_2025.pdf" style="width:100%; height:600px; border:none; margin-top:20px;"></iframe>
-    </section>
   </section>
 
-  <!-- JavaScript for Navbar Scroll Effect -->
+  <!-- Resume Section -->
+  <section class="resume-section" id="resume">
+    <div class="resume-container">
+      <div class="resume-card reveal">
+        <h2>My Resume</h2>
+        <p>Check out my professional experience and qualifications, or download a copy for your reference.</p>
+        
+        <div>
+          <a href="landing/assets/pdfs/ShubhRaval_Resume_2025.pdf" class="btn" download>Download Resume</a>
+          <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        </div>
+        
+        <iframe src="landing/assets/pdfs/ShubhRaval_Resume_2025.pdf" class="resume-preview"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- JavaScript for Animations and Navbar -->
   <script>
-    let lastScrollTop = 0;
+    // Navbar scroll effect
     const navbar = document.getElementById('navbar');
+    let lastScrollTop = 0;
 
     window.addEventListener('scroll', function() {
+      // Add scrolled class when scrolled down
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      
+      // Hide nav on scroll down, show on scroll up
       let currentScroll = window.scrollY;
       if (currentScroll > lastScrollTop && currentScroll > 100) {
-        navbar.classList.add('hidden'); // Hide nav on scroll down
+        navbar.classList.add('hidden');
       } else if (currentScroll < lastScrollTop || currentScroll < window.innerHeight * 0.25) {
-        navbar.classList.remove('hidden'); // Show nav on scroll up or if near top
+        navbar.classList.remove('hidden');
       }
       lastScrollTop = currentScroll;
     });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+    });
+
+    // Scroll reveal animation
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const revealTop = reveals[i].getBoundingClientRect().top;
+        const revealPoint = 150;
+        
+        if (revealTop < windowHeight - revealPoint) {
+          reveals[i].classList.add('active');
+        }
+      }
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    // Initial check on page load
+    revealOnScroll();
   </script>
 
-  <!-- Extended Pseudocode Readme (Commented Out) -->
+  <!-- Extended Pseudocode Documentation -->
   <!--
-  Pseudocode Documentation:
-  1. Landing Section:
-      - The landing section occupies the full viewport height (100vh) and contains the video background and centered welcome text.
-      - The video background is set to autoplay, loop, muted, and has an opacity of 75%.
-      - The landing content (welcome message) is centered both vertically and horizontally using flexbox.
+  WEBSITE STRUCTURE & FUNCTIONALITY DOCUMENTATION:
   
-  2. Navigation Bar:
-      - The navigation bar is fixed at the top of the page and contains navigation links.
-      - It hides when the user scrolls down and reappears when scrolling up or when the mouse is within the top 25% of the screen.
+  1. DESIGN PHILOSOPHY:
+     - Modern split-screen hero section creates visual interest and clear separation of video/content
+     - Subtle animations engage users without overwhelming them
+     - Clean typography with clear hierarchy (Montserrat for headings, Roboto for body text)
+     - Custom CSS variables make site-wide color/style changes simple
+     - Responsive design prioritizes content on smaller screens
   
-  3. Main Content Section:
-      - The main content follows the landing section and is fully scrollable.
-      - It includes a container for the About Me section (with a header, image, and description).
+  2. NAVIGATION:
+     - Fixed navigation with transparency effect that changes on scroll
+     - Uses mix-blend-mode for visibility against any background
+     - Mobile-friendly hamburger menu that activates slide-in navigation panel
+     - Intelligent hide/show based on scroll direction to maximize screen space
+     - Underline animation on hover enhances interactivity
   
-  4. Resume Tile:
-      - The resume tile provides a title, a short description, and a download button that triggers the download of the resume PDF.
-      - An embedded iframe displays the full resume, allowing the user to scroll within the resume area.
+  3. HERO SECTION:
+     - Split-screen layout: 50% video background, 50% content on desktop
+     - Video section has overlay gradient for improved text contrast
+     - Content section uses staggered animations for visual interest
+     - Custom scroll indicator invites further exploration
+     - Responsive: stacks vertically on mobile (video top, content bottom)
   
-  5. Responsiveness & Styling:
-      - The layout is designed to be responsive. The landing section occupies 100vh, while the main content section scrolls naturally.
-      - Flexbox is used to center and arrange elements.
-      - A fade-in animation is defined (to be used if needed for smooth appearance).
+  4. ABOUT SECTION:
+     - Clean layout with image on left, content on right
+     - Interactive image with border animation on hover
+     - Skills displayed as tags for quick visual scanning
+     - Scroll reveal animations bring content into view gracefully
+     - Stacks vertically on mobile with centered alignment
   
-  6. JavaScript Scroll Effect:
-      - JavaScript monitors the scroll position to hide the navigation bar when scrolling down, and reveal it when scrolling up or if the mouse is near the top.
+  5. RESUME SECTION:
+     - Card-based design with subtle background pattern
+     - Multiple call-to-action options (download, contact)
+     - Embedded iframe preview saves users time
+     - Responsive padding and sizing for different devices
+  
+  6. ANIMATION SYSTEM:
+     - Custom keyframe animations for hero content
+     - Scroll-based reveal animations throughout site
+     - Interactive hover effects on buttons and elements
+     - Mouse scroll animation in hero section
+     - Performance-optimized with transform and opacity properties
+  
+  7. RESPONSIVE STRATEGY:
+     - Desktop-first design with strategic breakpoints (1024px, 768px, 480px)
+     - Layout changes at mobile breakpoint to prioritize content
+     - Font size reductions at smaller screens
+     - Navigation converts to slide-in panel on mobile
+     - Flexbox layouts adjust automatically with screen size
   -->
 </body>
 </html>
