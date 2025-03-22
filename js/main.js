@@ -43,6 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
   loadComponent('hero-container', 'components/hero.html');
   loadComponent('about-container', 'components/about.html');
   loadComponent('resume-container', 'components/resume.html');
+  // Ensure section scroll functionality runs after components load
+  setTimeout(() => {
+    initSectionScroll();
+  }, 500); // Slight delay to ensure all elements exist
+
 });
 
 // Navbar functionality
@@ -99,3 +104,8 @@ function revealOnScroll() {
   // Initial check
   checkReveal();
 }
+
+// Load section scrolling functionality script
+document.addEventListener('DOMContentLoaded', function() {
+  initSectionScroll();
+});
