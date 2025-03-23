@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Section Template</title>
+  <title>Professional Experience</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,152 +34,145 @@
     </div>
   </nav>
 
-  <!-- Hero Section with Lateral Image -->
+  <!-- Professional Header Section -->
+  <!-- Professional Header Section -->
   <section class="hero" id="hero">
-    <div class="hero-split hero-visual lateral-visual">
-      <div class="visual-placeholder">
-        <img src="assets/images/2020_awards_dinner.jpg" alt="Lateral Image" class="lateral-image">
-      </div>
-    </div>
-    
-    <div class="hero-split hero-content">
-      <h1 class="hero-title">[Section Title]</h1>
-      <p class="hero-subtitle">[Brief description of this section]</p>
-      <a href="#main-content" class="hero-cta">Explore</a>
-    </div>
-
-    <div class="section-indicator">
-      <div class="dot dot-large active" data-section="hero"></div>
-      <div class="dot dot-small"></div>
-      <div class="dot dot-large" data-section="main-content"></div>
-      <div class="dot dot-small"></div>
-      <div class="dot dot-large" data-section="section-alt-main"></div>
-      <div class="dot dot-small"></div>
-      <div class="dot dot-large" data-section="timeline-content"></div>
-      <div class="dot dot-small"></div>
-      <div class="dot dot-large" data-section="call-to-action-content"></div>
-    </div>
-
-  </section>
-
-  <!-- Main Content Section -->
-  <section class="section" id="main-content">
-    <h2 class="section-title reveal">[Main Section Title]</h2>
-    
-    <!-- Content Block 1 -->
-    <div class="content-block reveal">
-      <div class="block-image">
-        [IMAGE PLACEHOLDER]
-      </div>
-      
-      <div class="block-content">
-        <h3>[Block Title]</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt. Cras in consequat tellus.</p>
-        <p>Etiam id orci vel purus interdum imperdiet. Integer non turpis orci. Nulla facilisi. Sed et velit nec arcu rhoncus commodo.</p>
-      </div>
-    </div>
-    
-    <!-- Content Block 2 (Reverse) -->
-    <div class="content-block reverse reveal">
-      <div class="block-image">
-        [IMAGE PLACEHOLDER]
-      </div>
-      
-      <div class="block-content">
-        <h3>[Block Title]</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt. Cras in consequat tellus.</p>
-        <p>Etiam id orci vel purus interdum imperdiet. Integer non turpis orci. Nulla facilisi. Sed et velit nec arcu rhoncus commodo.</p>
-      </div>
+    <div class="hero-container">
+      <h1 class="hero-title">Professional Journey</h1>
+      <p class="hero-subtitle">Engineering and Development Experience</p>
+      <a href="#experience-timeline" class="hero-cta">Explore Career</a>
     </div>
   </section>
 
-  <!-- Card Grid Section (Alternate Background) -->
-  <section class="section-alt" id="section-alt-main">
-    <div class="section-container">
-      <h2 class="section-title reveal">[Card Section Title]</h2>
-      
-      <div class="card-grid">
-        <!-- Card 1 -->
-        <div class="card reveal">
-          <div class="card-image">[IMAGE]</div>
-          <div class="card-content">
-            <h3 class="card-title">[Card Title]</h3>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus.</p>
-            <a href="#" class="card-link">Learn More</a>
+  <!-- Experience Timeline Container -->
+  <div class="timeline-container" id="experience-timeline">
+    <!-- Timeline Navigation -->
+    <div class="timeline-nav">
+      <div class="timeline-track">
+        <!-- Company bubbles will be dynamically created by JS -->
+      </div>
+    </div>
+
+    <!-- Company Experience Sections -->
+    <div class="experience-sections">
+      <!-- Kazvu Labs -->
+      <section class="experience-section" id="kazvu-labs" data-company="Kazvu Labs" data-year="Current">
+        <div class="experience-content">
+          <div class="company-header">
+            <div class="company-logo">
+              <!-- Replace with actual logo -->
+              <div class="logo-placeholder">KL</div>
+            </div>
+            <div class="company-info">
+              <h2>Kazvu Labs</h2>
+              <p class="company-period">2023 - Present</p>
+              <p class="company-role">Senior Engineer</p>
+            </div>
+          </div>
+          
+          <div class="experience-details">
+            <div class="content-block">
+              <h3>Overview</h3>
+              <p>Brief description of your role and responsibilities at Kazvu Labs.</p>
+            </div>
+            
+            <div class="content-block">
+              <h3>Key Projects</h3>
+              <div class="project-gallery">
+                <!-- Project slides go here -->
+                <div class="project-slide">
+                  <div class="project-image">
+                    <!-- Project image placeholder -->
+                    <div class="image-placeholder">Project Image</div>
+                  </div>
+                  <div class="project-description">
+                    <h4>Project Title</h4>
+                    <p>Project description and your contributions.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="content-block">
+              <h3>Technical Skills</h3>
+              <div class="skills-container">
+                <span class="skill-tag">Skill 1</span>
+                <span class="skill-tag">Skill 2</span>
+                <span class="skill-tag">Skill 3</span>
+              </div>
+            </div>
           </div>
         </div>
-        
-        <!-- Card 2 -->
-        <div class="card reveal">
-          <div class="card-image">[IMAGE]</div>
-          <div class="card-content">
-            <h3 class="card-title">[Card Title]</h3>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus.</p>
-            <a href="#" class="card-link">Learn More</a>
+      </section>
+
+      <!-- Amazon Robotics -->
+      <section class="experience-section" id="amazon-robotics" data-company="Amazon Robotics" data-year="2022">
+        <div class="experience-content">
+          <div class="company-header">
+            <div class="company-logo">
+              <!-- Replace with actual logo -->
+              <div class="logo-placeholder">AR</div>
+            </div>
+            <div class="company-info">
+              <h2>Amazon Robotics</h2>
+              <p class="company-period">2022 - 2023</p>
+              <p class="company-role">Robotics Engineer</p>
+            </div>
+          </div>
+          
+          <div class="experience-details">
+            <!-- Similar structure as above, customize for each company -->
+            <div class="content-block">
+              <h3>Overview</h3>
+              <p>Brief description of your role and responsibilities at Amazon Robotics.</p>
+            </div>
+            
+            <div class="content-block">
+              <h3>Key Projects</h3>
+              <div class="project-gallery">
+                <!-- Project slides go here -->
+              </div>
+            </div>
+            
+            <div class="content-block">
+              <h3>Technical Skills</h3>
+              <div class="skills-container">
+                <span class="skill-tag">Skill 1</span>
+                <span class="skill-tag">Skill 2</span>
+                <span class="skill-tag">Skill 3</span>
+              </div>
+            </div>
           </div>
         </div>
-        
-        <!-- Card 3 -->
-        <div class="card reveal">
-          <div class="card-image">[IMAGE]</div>
-          <div class="card-content">
-            <h3 class="card-title">[Card Title]</h3>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus.</p>
-            <a href="#" class="card-link">Learn More</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- Timeline Section -->
-  <section class="section" id="timeline-content">
-    <h2 class="section-title reveal">[Timeline Title]</h2>
-    
-    <div class="timeline">
-      <!-- Timeline Item 1 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-content">
-          <span class="timeline-date">[Date/Year]</span>
-          <h3 class="timeline-title">[Event Title]</h3>
-          <p class="timeline-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt.</p>
-        </div>
-      </div>
-      
-      <!-- Timeline Item 2 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-content">
-          <span class="timeline-date">[Date/Year]</span>
-          <h3 class="timeline-title">[Event Title]</h3>
-          <p class="timeline-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt.</p>
-        </div>
-      </div>
-      
-      <!-- Timeline Item 3 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-content">
-          <span class="timeline-date">[Date/Year]</span>
-          <h3 class="timeline-title">[Event Title]</h3>
-          <p class="timeline-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <!-- Add remaining companies following the same pattern -->
+      <!-- Medtronic -->
+      <section class="experience-section" id="medtronic" data-company="Medtronic" data-year="2021">
+        <!-- Content structure same as above -->
+      </section>
 
-  <!-- Call to Action Section -->
-  <section class="section-alt" id="call-to-action-content">
-    <div class="section-container">
-      <div class="cta-container reveal">
-        <h2>[CTA Title]</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt.</p>
-        
-        <div>
-          <a href="#" class="btn">[Primary Action]</a>
-          <a href="#" class="btn btn-secondary">[Secondary Action]</a>
-        </div>
-      </div>
+      <!-- Kairos Power -->
+      <section class="experience-section" id="kairos-power" data-company="Kairos Power" data-year="2020">
+        <!-- Content structure same as above -->
+      </section>
+
+      <!-- Applied Composites -->
+      <section class="experience-section" id="applied-composites" data-company="Applied Composites" data-year="2019">
+        <!-- Content structure same as above -->
+      </section>
+
+      <!-- The Boring Company -->
+      <section class="experience-section" id="boring-company" data-company="The Boring Company" data-year="2018">
+        <!-- Content structure same as above -->
+      </section>
+
+      <!-- Parker Hannifin -->
+      <section class="experience-section" id="parker-hannifin" data-company="Parker Hannifin" data-year="2017">
+        <!-- Content structure same as above -->
+      </section>
     </div>
-  </section>
+  </div>
 
   <!-- JavaScript file -->
   <script src="script.js"></script>
