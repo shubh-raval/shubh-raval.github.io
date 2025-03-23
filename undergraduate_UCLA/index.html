@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Section Template</title>
+  <title>Undergraduate Experience</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="undergraduate.css">
 </head>
 <body>
   <!-- Navigation Bar -->
@@ -43,9 +44,9 @@
     </div>
     
     <div class="hero-split hero-content">
-      <h1 class="hero-title">[Section Title]</h1>
-      <p class="hero-subtitle">[Brief description of this section]</p>
-      <a href="#main-content" class="hero-cta">Explore</a>
+      <h1 class="hero-title">Undergraduate Experience</h1>
+      <p class="hero-subtitle">Exploring Mechanical Engineering through classes and clubs at UCLA</p>
+      <a href="#main-content" class="hero-cta">Explore Projects</a>
     </div>
 
     <div class="section-indicator">
@@ -54,134 +55,298 @@
       <div class="dot dot-large" data-section="main-content"></div>
       <div class="dot dot-small"></div>
       <div class="dot dot-large" data-section="section-alt-main"></div>
-      <div class="dot dot-small"></div>
-      <div class="dot dot-large" data-section="timeline-content"></div>
-      <div class="dot dot-small"></div>
-      <div class="dot dot-large" data-section="call-to-action-content"></div>
     </div>
-
   </section>
 
-  <!-- Main Content Section -->
+  <!-- Main Projects Section -->
   <section class="section" id="main-content">
-    <h2 class="section-title reveal">[Main Section Title]</h2>
+    <h2 class="section-title reveal">Major Projects</h2>
     
-    <!-- Content Block 1 -->
-    <div class="content-block reveal">
-      <div class="block-image">
-        [IMAGE PLACEHOLDER]
-      </div>
-      
-      <div class="block-content">
-        <h3>[Block Title]</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt. Cras in consequat tellus.</p>
-        <p>Etiam id orci vel purus interdum imperdiet. Integer non turpis orci. Nulla facilisi. Sed et velit nec arcu rhoncus commodo.</p>
+    <!-- Project Navigation Tabs -->
+    <div class="project-navigation reveal">
+      <button class="project-tab active" data-project="capstone">Capstone Project</button>
+      <button class="project-tab" data-project="compliant">Compliant Mechanisms</button>
+      <button class="project-tab" data-project="fem">Finite Element Analysis</button>
+    </div>
+    
+    <!-- Capstone Project -->
+    <div class="project-content active" id="capstone-project">
+      <div class="content-block reveal">
+        <div class="block-image">
+          <!-- This will be replaced with actual capstone project image -->
+          [CAPSTONE IMAGE]
+        </div>
+        
+        <div class="block-content">
+          <h3>Senior Capstone Design Project</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt. This capstone project focused on developing an innovative solution for real-world mechanical engineering challenges.</p>
+          
+          <!-- Expandable content for more details -->
+          <div class="expandable-content" id="capstone-details">
+            <div class="cad-model-container">
+              <!-- CAD Model Viewer (placeholder) -->
+              <!-- data-model attribute would point to the actual STL file -->
+              <div id="capstone-cad-viewer" class="cad-viewer" data-model="models/capstone_model.stl">
+                [CAPSTONE CAD MODEL VIEWER]
+              </div>
+              
+              <div class="cad-controls">
+                <div class="cad-control-btn" data-action="rotate">
+                  <i class="fas fa-sync-alt"></i>
+                </div>
+                <div class="cad-control-btn" data-action="zoom">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+                <div class="cad-control-btn" data-action="pan">
+                  <i class="fas fa-arrows-alt"></i>
+                </div>
+              </div>
+            </div>
+            
+            <h4>Project Presentation</h4>
+            <p>View our final presentation showcasing the design process, challenges, and solutions:</p>
+            <a href="#" class="btn">View Presentation</a>
+            
+            <h4>Media Gallery</h4>
+            <div class="media-gallery">
+              <div class="media-item">
+                [IMAGE 1]
+              </div>
+              <div class="media-item video">
+                [VIDEO 1]
+              </div>
+              <div class="media-item">
+                [IMAGE 2]
+              </div>
+              <div class="media-item">
+                [IMAGE 3]
+              </div>
+            </div>
+          </div>
+          
+          <div class="expand-button" data-target="capstone-details">
+            See More <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
       </div>
     </div>
     
-    <!-- Content Block 2 (Reverse) -->
-    <div class="content-block reverse reveal">
-      <div class="block-image">
-        [IMAGE PLACEHOLDER]
+    <!-- Compliant Mechanisms Project -->
+    <div class="project-content" id="compliant-project">
+      <div class="content-block reveal">
+        <div class="block-image">
+          <!-- This will be replaced with actual compliant mechanisms project image -->
+          [COMPLIANT MECHANISMS IMAGE]
+        </div>
+        
+        <div class="block-content">
+          <h3>C294A Compliant Mechanisms</h3>
+          <p>Exploration of mechanisms that gain their motion from the deflection of flexible members rather than from movable joints. This project focused on designing and analyzing compliant mechanisms for practical applications.</p>
+          
+          <!-- Expandable content for more details -->
+          <div class="expandable-content" id="compliant-details">
+            <div class="cad-model-container">
+              <!-- CAD Model Viewer (placeholder) -->
+              <div id="compliant-cad-viewer" class="cad-viewer" data-model="models/compliant_model.stl">
+                [COMPLIANT MECHANISM CAD MODEL VIEWER]
+              </div>
+              
+              <div class="cad-controls">
+                <div class="cad-control-btn" data-action="rotate">
+                  <i class="fas fa-sync-alt"></i>
+                </div>
+                <div class="cad-control-btn" data-action="zoom">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+                <div class="cad-control-btn" data-action="pan">
+                  <i class="fas fa-arrows-alt"></i>
+                </div>
+              </div>
+            </div>
+            
+            <h4>Final Project Report</h4>
+            <div class="report-preview">
+              <p>The final report details the design methodology, analysis, and findings of our compliant mechanism project:</p>
+              <a href="#" class="btn">View Full Report</a>
+            </div>
+            
+            <h4>Mechanism Animation</h4>
+            <div class="media-item">
+              [GIF/ANIMATION OF MECHANISM]
+            </div>
+          </div>
+          
+          <div class="expand-button" data-target="compliant-details">
+            See More <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
       </div>
-      
-      <div class="block-content">
-        <h3>[Block Title]</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt. Cras in consequat tellus.</p>
-        <p>Etiam id orci vel purus interdum imperdiet. Integer non turpis orci. Nulla facilisi. Sed et velit nec arcu rhoncus commodo.</p>
+    </div>
+    
+    <!-- Finite Element Method Project -->
+    <div class="project-content" id="fem-project">
+      <div class="content-block reveal">
+        <div class="block-image">
+          <!-- This will be replaced with actual FEM project image -->
+          [FEM ANALYSIS IMAGE]
+        </div>
+        
+        <div class="block-content">
+          <h3>M168 Finite Element Method and Analysis</h3>
+          <p>Advanced study of finite element analysis techniques for solving complex engineering problems. This project involved developing numerical models to predict structural behaviors under various loading conditions.</p>
+          
+          <!-- Expandable content for more details -->
+          <div class="expandable-content" id="fem-details">
+            <div class="media-gallery">
+              <div class="media-item">
+                [FEM RESULT IMAGE 1]
+              </div>
+              <div class="media-item">
+                [FEM RESULT IMAGE 2]
+              </div>
+              <div class="media-item">
+                [FEM RESULT IMAGE 3]
+              </div>
+              <div class="media-item">
+                [FEM RESULT IMAGE 4]
+              </div>
+            </div>
+            
+            <h4>Technical Highlights</h4>
+            <ul>
+              <li>Implemented advanced meshing techniques for complex geometries</li>
+              <li>Analyzed non-linear material behaviors under stress</li>
+              <li>Optimized structural designs based on FEA results</li>
+              <li>Validated simulation results against experimental data</li>
+            </ul>
+          </div>
+          
+          <div class="expand-button" data-target="fem-details">
+            See More <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Card Grid Section (Alternate Background) -->
+  <!-- Smaller Projects Section (Card Grid) -->
   <section class="section-alt" id="section-alt-main">
     <div class="section-container">
-      <h2 class="section-title reveal">[Card Section Title]</h2>
+      <h2 class="section-title reveal">Additional Experience</h2>
       
       <div class="card-grid">
-        <!-- Card 1 -->
+        <!-- CAD Class Card -->
         <div class="card reveal">
-          <div class="card-image">[IMAGE]</div>
+          <div class="card-image">[CAD CLASS IMAGE]</div>
           <div class="card-content">
-            <h3 class="card-title">[Card Title]</h3>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus.</p>
-            <a href="#" class="card-link">Learn More</a>
+            <h3 class="card-title">CAD Class</h3>
+            <p class="card-text">Developed advanced 3D modeling skills using industry-standard CAD software to create detailed mechanical components and assemblies.</p>
+            
+            <!-- Expandable content -->
+            <div class="expandable-content" id="cad-class-details">
+              <div class="cad-model-container">
+                <!-- CAD Model Viewer (placeholder) -->
+                <div id="cad-class-viewer" class="cad-viewer" data-model="models/cad_class_model.stl">
+                  [CAD CLASS MODEL VIEWER]
+                </div>
+                
+                <div class="cad-controls">
+                  <div class="cad-control-btn" data-action="rotate">
+                    <i class="fas fa-sync-alt"></i>
+                  </div>
+                  <div class="cad-control-btn" data-action="zoom">
+                    <i class="fas fa-search-plus"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="expand-button" data-target="cad-class-details">
+              View Model <i class="fas fa-chevron-down"></i>
+            </div>
           </div>
         </div>
         
-        <!-- Card 2 -->
+        <!-- FSAE Chassis Team Card -->
         <div class="card reveal">
-          <div class="card-image">[IMAGE]</div>
+          <div class="card-image">[FSAE IMAGE]</div>
           <div class="card-content">
-            <h3 class="card-title">[Card Title]</h3>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus.</p>
-            <a href="#" class="card-link">Learn More</a>
+            <h3 class="card-title">FSAE Chassis Team</h3>
+            <p class="card-text">Contributed to the design and analysis of the chassis for UC Berkeley's Formula SAE race car competition team.</p>
+            
+            <!-- Expandable content -->
+            <div class="expandable-content" id="fsae-details">
+              <div class="cad-model-container">
+                <!-- CAD Model Viewer (placeholder) -->
+                <div id="fsae-viewer" class="cad-viewer" data-model="models/fsae_chassis.stl">
+                  [FSAE CHASSIS CAD MODEL VIEWER]
+                </div>
+                
+                <div class="cad-controls">
+                  <div class="cad-control-btn" data-action="rotate">
+                    <i class="fas fa-sync-alt"></i>
+                  </div>
+                  <div class="cad-control-btn" data-action="zoom">
+                    <i class="fas fa-search-plus"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="expand-button" data-target="fsae-details">
+              View Chassis <i class="fas fa-chevron-down"></i>
+            </div>
           </div>
         </div>
         
-        <!-- Card 3 -->
+        <!-- ASME Combat Robotics Card -->
         <div class="card reveal">
-          <div class="card-image">[IMAGE]</div>
+          <div class="card-image">[COMBAT ROBOT IMAGE]</div>
           <div class="card-content">
-            <h3 class="card-title">[Card Title]</h3>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus.</p>
-            <a href="#" class="card-link">Learn More</a>
+            <h3 class="card-title">ASME Combat Robotics</h3>
+            <p class="card-text">Designed and built combat robots as part of the American Society of Mechanical Engineers student chapter, competing in intercollegiate tournaments.</p>
+            
+            <!-- Expandable content -->
+            <div class="expandable-content" id="asme-details">
+              <div class="media-gallery">
+                <div class="media-item">
+                  [ROBOT IMAGE 1]
+                </div>
+                <div class="media-item">
+                  [ROBOT IMAGE 2]
+                </div>
+              </div>
+            </div>
+            
+            <div class="expand-button" data-target="asme-details">
+              See More <i class="fas fa-chevron-down"></i>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Timeline Section -->
-  <section class="section" id="timeline-content">
-    <h2 class="section-title reveal">[Timeline Title]</h2>
-    
-    <div class="timeline">
-      <!-- Timeline Item 1 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-content">
-          <span class="timeline-date">[Date/Year]</span>
-          <h3 class="timeline-title">[Event Title]</h3>
-          <p class="timeline-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt.</p>
-        </div>
-      </div>
-      
-      <!-- Timeline Item 2 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-content">
-          <span class="timeline-date">[Date/Year]</span>
-          <h3 class="timeline-title">[Event Title]</h3>
-          <p class="timeline-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt.</p>
-        </div>
-      </div>
-      
-      <!-- Timeline Item 3 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-content">
-          <span class="timeline-date">[Date/Year]</span>
-          <h3 class="timeline-title">[Event Title]</h3>
-          <p class="timeline-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt.</p>
-        </div>
-      </div>
+  <!-- Media Modal for enlarged images/videos -->
+  <div class="media-modal" id="media-modal">
+    <div class="media-modal-close">
+      <i class="fas fa-times"></i>
     </div>
-  </section>
-
-  <!-- Call to Action Section -->
-  <section class="section-alt" id="call-to-action-content">
-    <div class="section-container">
-      <div class="cta-container reveal">
-        <h2>[CTA Title]</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt.</p>
-        
-        <div>
-          <a href="#" class="btn">[Primary Action]</a>
-          <a href="#" class="btn btn-secondary">[Secondary Action]</a>
-        </div>
-      </div>
+    <div class="media-modal-content" id="media-modal-content">
+      <!-- Content will be dynamically inserted here -->
     </div>
-  </section>
+  </div>
 
-  <!-- JavaScript file -->
+  <!-- JavaScript -->
   <script src="script.js"></script>
+  <script>
+    // Initialize undergraduate page specific functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      initUndergraduatePage();
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/loaders/STLLoader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/controls/OrbitControls.js"></script>
 </body>
 </html>
