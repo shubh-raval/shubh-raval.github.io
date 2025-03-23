@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Section Template</title>
+  <title>Undergraduate Experience</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="undergraduate.css">
 </head>
 <body>
   <!-- Navigation Bar -->
@@ -38,14 +39,14 @@
   <section class="hero" id="hero">
     <div class="hero-split hero-visual lateral-visual">
       <div class="visual-placeholder">
-        <img src="assets/images/2020_awards_dinner.jpg" alt="Lateral Image" class="lateral-image">
+        <img src="assets/images/gatech_header.png" alt="Lateral Image" class="lateral-image">
       </div>
     </div>
     
     <div class="hero-split hero-content">
-      <h1 class="hero-title">[Section Title]</h1>
-      <p class="hero-subtitle">[Brief description of this section]</p>
-      <a href="#main-content" class="hero-cta">Explore</a>
+      <h1 class="hero-title">Masters in Mechanical Engineeing at Georgia Tech</h1>
+      <p class="hero-subtitle">MSME with a focus on Design and Manufacturing</p>
+      <a href="#main-content" class="hero-cta">Explore Projects</a>
     </div>
 
     <div class="section-indicator">
@@ -54,134 +55,252 @@
       <div class="dot dot-large" data-section="main-content"></div>
       <div class="dot dot-small"></div>
       <div class="dot dot-large" data-section="section-alt-main"></div>
-      <div class="dot dot-small"></div>
-      <div class="dot dot-large" data-section="timeline-content"></div>
-      <div class="dot dot-small"></div>
-      <div class="dot dot-large" data-section="call-to-action-content"></div>
     </div>
-
   </section>
 
-  <!-- Main Content Section -->
+  <!-- Main Projects Section -->
   <section class="section" id="main-content">
-    <h2 class="section-title reveal">[Main Section Title]</h2>
+    <h2 class="section-title reveal">Course Highlights</h2>
     
-    <!-- Content Block 1 -->
-    <div class="content-block reveal">
-      <div class="block-image">
-        [IMAGE PLACEHOLDER]
-      </div>
-      
-      <div class="block-content">
-        <h3>[Block Title]</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt. Cras in consequat tellus.</p>
-        <p>Etiam id orci vel purus interdum imperdiet. Integer non turpis orci. Nulla facilisi. Sed et velit nec arcu rhoncus commodo.</p>
-      </div>
-    </div>
-    
-    <!-- Content Block 2 (Reverse) -->
-    <div class="content-block reverse reveal">
-      <div class="block-image">
-        [IMAGE PLACEHOLDER]
-      </div>
-      
-      <div class="block-content">
-        <h3>[Block Title]</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt. Cras in consequat tellus.</p>
-        <p>Etiam id orci vel purus interdum imperdiet. Integer non turpis orci. Nulla facilisi. Sed et velit nec arcu rhoncus commodo.</p>
-      </div>
-    </div>
-  </section>
+    <!-- Project Navigation Tabs -->
+    <div class="project-navigation reveal">
+      <button class="project-tab active" data-project="ME6101">ME6101 Engineering Design</button>
+      <button class="project-tab" data-project="ME6103">ME6103 Optimization Engineering</button>
+      <button class="project-tab" data-project="ME6407">ME6407 Robotics</button>
+      <button class="project-tab" data-project="ME6102">ME6102 Designing Open Engineering System</button>
 
-  <!-- Card Grid Section (Alternate Background) -->
-  <section class="section-alt" id="section-alt-main">
-    <div class="section-container">
-      <h2 class="section-title reveal">[Card Section Title]</h2>
-      
-      <div class="card-grid">
-        <!-- Card 1 -->
-        <div class="card reveal">
-          <div class="card-image">[IMAGE]</div>
-          <div class="card-content">
-            <h3 class="card-title">[Card Title]</h3>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus.</p>
-            <a href="#" class="card-link">Learn More</a>
-          </div>
+    </div>
+    
+    <!-- Capstone Project -->
+    <div class="project-content active" id="ME6101-project">
+      <div class="content-block reveal">
+        <div class="block-image">
+          <!-- This will be replaced with actual capstone project image -->
+          [CAPSTONE IMAGE]
         </div>
         
-        <!-- Card 2 -->
-        <div class="card reveal">
-          <div class="card-image">[IMAGE]</div>
-          <div class="card-content">
-            <h3 class="card-title">[Card Title]</h3>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus.</p>
-            <a href="#" class="card-link">Learn More</a>
+        <div class="block-content">
+          <h3>Design Analysis Projects</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt. This capstone project focused on developing an innovative solution for real-world mechanical engineering challenges.</p>
+          
+          <!-- Expandable content for more details -->
+          <div class="expandable-content" id="capstone-details">
+            
+            <h4>Project Presentation</h4>
+            <p>View our final presentation showcasing the design process, challenges, and solutions:</p>
+            <a href="#" class="btn">View Presentation</a>
+            
+            <h4>Media Gallery</h4>
+            <div class="media-gallery">
+              <div class="media-item">
+                [IMAGE 1]
+              </div>
+              <div class="media-item video">
+                [VIDEO 1]
+              </div>
+              <div class="media-item">
+                [IMAGE 2]
+              </div>
+              <div class="media-item">
+                [IMAGE 3]
+              </div>
+            </div>
           </div>
-        </div>
-        
-        <!-- Card 3 -->
-        <div class="card reveal">
-          <div class="card-image">[IMAGE]</div>
-          <div class="card-content">
-            <h3 class="card-title">[Card Title]</h3>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus.</p>
-            <a href="#" class="card-link">Learn More</a>
+          
+          <div class="expand-button" data-target="capstone-details">
+            See More <i class="fas fa-chevron-down"></i>
           </div>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- Timeline Section -->
-  <section class="section" id="timeline-content">
-    <h2 class="section-title reveal">[Timeline Title]</h2>
     
-    <div class="timeline">
-      <!-- Timeline Item 1 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-content">
-          <span class="timeline-date">[Date/Year]</span>
-          <h3 class="timeline-title">[Event Title]</h3>
-          <p class="timeline-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt.</p>
+    <!-- Compliant Mechanisms Project -->
+    <div class="project-content" id="ME6103-project">
+      <div class="content-block reveal">
+        <div class="block-image">
+          <!-- This will be replaced with actual compliant mechanisms project image -->
+          [COMPLIANT MECHANISMS IMAGE]
         </div>
-      </div>
-      
-      <!-- Timeline Item 2 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-content">
-          <span class="timeline-date">[Date/Year]</span>
-          <h3 class="timeline-title">[Event Title]</h3>
-          <p class="timeline-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt.</p>
-        </div>
-      </div>
-      
-      <!-- Timeline Item 3 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-content">
-          <span class="timeline-date">[Date/Year]</span>
-          <h3 class="timeline-title">[Event Title]</h3>
-          <p class="timeline-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Call to Action Section -->
-  <section class="section-alt" id="call-to-action-content">
-    <div class="section-container">
-      <div class="cta-container reveal">
-        <h2>[CTA Title]</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas feugiat magna sed dui finibus, sed rhoncus odio tincidunt.</p>
         
-        <div>
-          <a href="#" class="btn">[Primary Action]</a>
-          <a href="#" class="btn btn-secondary">[Secondary Action]</a>
+        <div class="block-content">
+          <h3>Spherical Parallel Manipulator Optimization</h3>
+          <p>Exploration of mechanisms that gain their motion from the deflection of flexible members rather than from movable joints. This project focused on designing and analyzing compliant mechanisms for practical applications.</p>
+          
+          <!-- Expandable content for more details -->
+          <div class="expandable-content" id="compliant-details">
+            
+            <h4>Final Project Report</h4>
+            <div class="report-preview">
+              <p>The final report details the design methodology, analysis, and findings of our compliant mechanism project:</p>
+              <a href="#" class="btn">View Full Report</a>
+            </div>
+            
+            <h4>Mechanism Animation</h4>
+            <div class="media-item">
+              [GIF/ANIMATION OF MECHANISM]
+            </div>
+          </div>
+          
+          <div class="expand-button" data-target="compliant-details">
+            See More <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Finite Element Method Project -->
+    <div class="project-content" id="ME6102-project">
+      <div class="content-block reveal">
+        <div class="block-image">
+          <!-- This will be replaced with actual FEM project image -->
+          [FEM ANALYSIS IMAGE]
+        </div>
+        
+        <div class="block-content">
+          <h3>ME6102 Designing Open Engineering Systems</h3>
+          <p>Various Methods to analysis engineering system such as black box models, methods to develop creative solutions, and a final design project serving as a culmination</p>
+          
+          <!-- Expandable content for more details -->
+          <div class="expandable-content" id="fem-details">
+            <div class="media-gallery">
+              <div class="media-item">
+                [FEM RESULT IMAGE 1]
+              </div>
+              <div class="media-item">
+                [FEM RESULT IMAGE 2]
+              </div>
+              <div class="media-item">
+                [FEM RESULT IMAGE 3]
+              </div>
+              <div class="media-item">
+                [FEM RESULT IMAGE 4]
+              </div>
+            </div>
+            
+            <h4>Technical Highlights</h4>
+            <ul>
+              <li>Implemented advanced meshing techniques for complex geometries</li>
+              <li>Analyzed non-linear material behaviors under stress</li>
+              <li>Optimized structural designs based on FEA results</li>
+              <li>Validated simulation results against experimental data</li>
+            </ul>
+          </div>
+          
+          <div class="expand-button" data-target="fem-details">
+            See More <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Finite Element Method Project -->
+    <div class="project-content" id="ME6407-project">
+      <div class="content-block reveal">
+        <div class="block-image">
+          <!-- This will be replaced with actual FEM project image -->
+          [FEM ANALYSIS IMAGE]
+        </div>
+        
+        <div class="block-content">
+          <h3>ME6407 Introduction to Robotics</h3>
+          <p>Focusing in on robotic arms below are various matlab and simscape models worked on through the class</p>
+          
+          <!-- Expandable content for more details -->
+          <div class="expandable-content" id="fem-details">
+            <div class="media-gallery">
+              <div class="media-item">
+                [FEM RESULT IMAGE 1]
+              </div>
+              <div class="media-item">
+                [FEM RESULT IMAGE 2]
+              </div>
+              <div class="media-item">
+                [FEM RESULT IMAGE 3]
+              </div>
+              <div class="media-item">
+                [FEM RESULT IMAGE 4]
+              </div>
+            </div>
+            
+            <h4>Technical Highlights</h4>
+            <ul>
+              <li>Implemented advanced meshing techniques for complex geometries</li>
+              <li>Analyzed non-linear material behaviors under stress</li>
+              <li>Optimized structural designs based on FEA results</li>
+              <li>Validated simulation results against experimental data</li>
+            </ul>
+          </div>
+          
+          <div class="expand-button" data-target="fem-details">
+            See More <i class="fas fa-chevron-down"></i>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- JavaScript file -->
+  <!-- Media Modal for enlarged images/videos -->
+  <div class="media-modal" id="media-modal">
+    <div class="media-modal-close">
+      <i class="fas fa-times"></i>
+    </div>
+    <div class="media-modal-content" id="media-modal-content">
+      <!-- Content will be dynamically inserted here -->
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+
+  <!-- Update your script section near the end of the page -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+    
+  <script type="module">
+    import { createViewer } from './stl-viewer.js';
+    
+    // Initialize viewer when document is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      // Find all elements with class 'cad-viewer' that have a data-model attribute
+      const viewerElements = document.querySelectorAll('.cad-viewer[data-model]');
+      
+      // Initialize each viewer with its corresponding model
+      viewerElements.forEach((element) => {
+        const modelPath = element.getAttribute('data-model');
+        const viewerId = element.id;
+        
+        if (viewerId && modelPath) {
+          createViewer(viewerId, modelPath);
+        }
+      });
+    });
+  </script>
+
+  <!-- Load Three.js modules directly -->
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { STLLoader } from 'three/addons/loaders/STLLoader.js';
+    
+    // Make THREE available globally
+    window.THREE = THREE;
+    window.THREE.OrbitControls = OrbitControls;
+    window.THREE.STLLoader = STLLoader;
+    
+  </script>
+
+  <script>
+    // Initialize undergraduate page specific functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      initUndergraduatePage();
+    });
+  </script>
   <script src="script.js"></script>
+
 </body>
 </html>

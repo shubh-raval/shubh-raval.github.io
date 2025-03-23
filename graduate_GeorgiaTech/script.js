@@ -109,3 +109,64 @@ function initSectionScroll() {
 
 // Make sure to call the initSectionScroll function
 window.addEventListener('DOMContentLoaded', initSectionScroll);
+
+// Function to handle project tab navigation
+function initProjectTabs() {
+  const projectTabs = document.querySelectorAll('.project-tab');
+  const projectContents = document.querySelectorAll('.project-content');
+  
+  projectTabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+      // Remove active class from all tabs and contents
+      projectTabs.forEach(t => t.classList.remove('active'));
+      projectContents.forEach(c => c.classList.remove('active'));
+      
+      // Add active class to clicked tab
+      this.classList.add('active');
+          // Update any STL viewers in the newly visible tab
+      setTimeout(() => {
+        const activeTab = document.querySelector('.project-content.active');
+        if (activeTab) {
+          const viewers = activeTab.querySelectorAll('.cad-viewer');
+          viewers.forEach(viewer => {
+            if (viewer.id && window.stlViewers[viewer.id]) {
+              window.stlViewers[viewer.id].resize();
+            }
+          });
+        }
+      }, 50); // Small timeout to ensure DOM is updated
+      // Show corresponding content
+      const projectId = this.getAttribute('data-project');
+      document.getElementById(`${projectId}-project`).classList.add('active');
+    });
+  });
+}
+
+// Handle expandable content sections
+function initExpandableContent() {
+  const expandButtons = document.querySelectorAll('.expand-button');
+  
+  expandButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const targetId = this.getAttribute('data-target');
+      const targetContent = document.getElementById(targetId);
+      
+      targetContent.classList.toggle('expanded');
+      
+      // Toggle button text
+      if (targetContent.classList.contains('expanded')) {
+        this.innerHTML = 'See Less <i class="fas fa-chevron-up"></i>';
+      } else {
+        this.innerHTML = 'See More <i class="fas fa-chevron-down"></i>';
+      }
+    });
+  });
+}
+
+
+// Initialize all page functionality
+function initUndergraduatePage() {
+  initProjectTabs();
+  initExpandableContent();
+  revealOnScroll(); // Call once on load to reveal visible elements
+}

@@ -123,7 +123,18 @@ function initProjectTabs() {
       
       // Add active class to clicked tab
       this.classList.add('active');
-      
+          // Update any STL viewers in the newly visible tab
+      setTimeout(() => {
+        const activeTab = document.querySelector('.project-content.active');
+        if (activeTab) {
+          const viewers = activeTab.querySelectorAll('.cad-viewer');
+          viewers.forEach(viewer => {
+            if (viewer.id && window.stlViewers[viewer.id]) {
+              window.stlViewers[viewer.id].resize();
+            }
+          });
+        }
+      }, 50); // Small timeout to ensure DOM is updated
       // Show corresponding content
       const projectId = this.getAttribute('data-project');
       document.getElementById(`${projectId}-project`).classList.add('active');
@@ -152,94 +163,10 @@ function initExpandableContent() {
   });
 }
 
-// Function to initialize Three.js STL viewers
-function initSTLViewers() {
-  if (typeof THREE === 'undefined') {
-    // Add Three.js script if not already loaded
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-    script.onload = setupSTLViewers;
-    document.head.appendChild(script);
-  } else {
-    setupSTLViewers();
-  }
-}
-
-function setupSTLViewers() {
-  const viewers = document.querySelectorAll('.cad-viewer');
-  
-  viewers.forEach(viewer => {
-    const modelPath = viewer.getAttribute('data-model');
-    if (!modelPath) return;
-    
-    // Create Three.js scene, camera, renderer
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xf0f0f0);
-    
-    const camera = new THREE.PerspectiveCamera(75, viewer.clientWidth / viewer.clientHeight, 0.1, 1000);
-    camera.position.z = 5;
-    
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(viewer.clientWidth, viewer.clientHeight);
-    
-    // Clear placeholder content and add renderer
-    viewer.innerHTML = '';
-    viewer.appendChild(renderer.domElement);
-    
-    // Add lighting
-    const ambientLight = new THREE.AmbientLight(0x404040);
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-    directionalLight.position.set(1, 1, 1);
-    scene.add(ambientLight);
-    scene.add(directionalLight);
-    
-    // Load STL file
-    const loader = new THREE.STLLoader();
-    loader.load(modelPath, function(geometry) {
-      const material = new THREE.MeshPhongMaterial({ color: 0x2d4059, specular: 0x111111, shininess: 200 });
-      const mesh = new THREE.Mesh(geometry, material);
-      
-      // Center the model
-      geometry.computeBoundingBox();
-      const box = geometry.boundingBox;
-      const center = new THREE.Vector3();
-      box.getCenter(center);
-      mesh.position.sub(center);
-      
-      scene.add(mesh);
-      
-      // Setup orbit controls for the viewer
-      const controls = new THREE.OrbitControls(camera, renderer.domElement);
-      controls.enableDamping = true;
-      controls.dampingFactor = 0.25;
-      
-      // Handle control buttons
-      const container = viewer.closest('.cad-model-container');
-      if (container) {
-        const rotateBtn = container.querySelector('[data-action="rotate"]');
-        const zoomBtn = container.querySelector('[data-action="zoom"]');
-        const panBtn = container.querySelector('[data-action="pan"]');
-        
-        if (rotateBtn) rotateBtn.addEventListener('click', () => { controls.enableRotate = true; });
-        if (zoomBtn) zoomBtn.addEventListener('click', () => { controls.enableZoom = true; });
-        if (panBtn) panBtn.addEventListener('click', () => { controls.enablePan = true; });
-      }
-      
-      // Animation loop
-      function animate() {
-        requestAnimationFrame(animate);
-        controls.update();
-        renderer.render(scene, camera);
-      }
-      animate();
-    });
-  });
-}
 
 // Initialize all page functionality
 function initUndergraduatePage() {
   initProjectTabs();
   initExpandableContent();
-  initSTLViewers();
   revealOnScroll(); // Call once on load to reveal visible elements
 }
