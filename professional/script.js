@@ -4,7 +4,7 @@ const companies = [
     id: "kazvu-labs",
     name: "Kazvu Labs",
     year: "Current",
-    logo: "kl_logo.png" // Replace with actual logo filename
+    logo: "kazvu_labs_logo.jpg" // Replace with actual logo filename
   },
   {
     id: "amazon-robotics",
