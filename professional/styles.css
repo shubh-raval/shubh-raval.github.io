@@ -42,11 +42,11 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.5rem;
+  padding: 1.2rem;
   z-index: 1000;
-  transition: background-color var(--transition-fast), 
-              padding var(--transition-fast),
-              box-shadow var(--transition-fast),
+  background-color: rgba(255, 255, 255, 0.95); /* Start with white background */
+  box-shadow: var(--shadow); /* Add shadow from start */
+  transition: padding var(--transition-fast),
               transform 0.3s ease-in-out;
 }
 
@@ -68,15 +68,16 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 
+/* Update text colors for default state */
 .logo {
   font-family: var(--header-font);
   font-weight: 700;
   font-size: 1.5rem;
-  color: var(--text-light);
+  color: var(--primary-color); /* Dark text from start */
   text-decoration: none;
   letter-spacing: 1px;
   transition: color var(--transition-fast);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Text shadow for better contrast */
+  text-shadow: none;
 }
 
 .navbar.scrolled .logo {
@@ -93,14 +94,15 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 2rem;
 }
 
+
 .nav-links a {
-  color: var(--text-light);
+  color: var(--text-dark); /* Dark text from start */
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
   position: relative;
   transition: color var(--transition-fast);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Text shadow for better contrast */
+  text-shadow: none;
 }
 
 .navbar.scrolled .nav-links a {
@@ -136,9 +138,9 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   height: 3px;
   width: 100%;
-  background-color: var(--text-light);
+  background-color: var(--text-dark); /* Dark from start */
   transition: background-color var(--transition-fast);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Shadow for better contrast */
+  box-shadow: none;
 }
 
 .navbar.scrolled .menu-toggle span {
@@ -149,13 +151,14 @@ h1, h2, h3, h4, h5, h6 {
 /* ===== HERO SECTION (Updated) ===== */
 .hero {
   position: relative;
-  height: 60vh;
+  height: 40vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--primary-color);
+  background-color: #f0f2f5;
   overflow: hidden;
+  margin-top: 80px; /* Add margin to account for the navbar height */
 }
 
 .hero::before {
@@ -165,7 +168,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(45, 64, 89, 0.9) 0%, rgba(45, 64, 89, 0.7) 100%);
+  background: linear-gradient(135deg, rgba(240, 242, 245, 0.9) 0%, rgba(220, 225, 235, 0.7) 100%); /* Subtle gradient in light greys */
   z-index: 1;
 }
 
@@ -178,19 +181,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: 3.5rem; /* Slightly smaller font */
   line-height: 1.2;
-  margin-bottom: 1.5rem;
-  color: var(--text-light);
+  margin-bottom: 1.2rem; /* Reduced margin */
+  color: var(--primary-color); /* Dark text on light background */
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1s forwards 0.3s;
 }
 
 .hero-subtitle {
-  font-size: 1.5rem;
-  margin-bottom: 2.5rem;
-  color: var(--text-light);
+  font-size: 1.3rem; /* Slightly smaller font */
+  margin-bottom: 2rem; /* Reduced margin */
+  color: var(--text-dark); /* Dark text on light background */
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1s forwards 0.6s;
@@ -198,8 +201,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-cta {
   display: inline-block;
-  padding: 1rem 2rem;
-  background-color: var(--secondary-color);
+  padding: 0.8rem 1.8rem; /* Slightly smaller padding */
+  background-color: var(--primary-color);
   color: var(--text-light);
   text-decoration: none;
   font-weight: 600;
@@ -223,14 +226,13 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
-/* Timeline Navigation */
 .timeline-nav {
   position: fixed;
-  left: 0;
+  right: 0; /* Changed from left to right */
   top: 0;
   width: 100px;
   height: 100vh;
-  background: var(--primary-color);
+  background: transparent; /* Removed background */
   z-index: 100;
   display: flex;
   justify-content: center;
@@ -252,7 +254,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   width: 2px;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(45, 64, 89, 0.3); /* Lighter track line */
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
@@ -270,13 +272,15 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   z-index: 5;
+  border: 1px solid rgba(45, 64, 89, 0.2); /* Light border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .company-bubble::after {
   content: attr(data-year);
   position: absolute;
-  right: -70px;
-  color: white;
+  left: -70px; /* Changed from right to left since bubbles are now on right */
+  color: var(--text-dark); /* Dark text for visibility */
   font-size: 0.8rem;
   font-weight: 600;
   opacity: 0;
@@ -295,13 +299,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .company-bubble.active {
   transform: scale(1.2);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 20px rgba(45, 64, 89, 0.3);
+  border-color: var(--secondary-color);
 }
 
 /* Experience Sections */
 .experience-sections {
   flex: 1;
-  margin-left: 100px; /* Match timeline-nav width */
+  margin-right: 100px; /* Changed from margin-left to margin-right */
+  margin-left: 0;
 }
 
 .experience-section {
@@ -321,22 +327,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Company Header */
+/* Update this in your styles.css file */
 .company-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Changed from center to flex-start */
   margin-bottom: 3rem;
 }
 
 .company-logo {
+  flex-shrink: 0; /* Prevent logo from shrinking */
   width: 100px;
   height: 100px;
   border-radius: 10px;
-  background-color: var(--primary-color);
+  background-color: var(--background-light);
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 2rem;
   box-shadow: var(--shadow);
+}
+.company-logo img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+.company-info {
+  padding-top: 10px; /* Add some padding at the top */
 }
 
 .logo-placeholder {
@@ -392,21 +408,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Project Gallery */
+/* Project Gallery - Updated for grid layout */
 .project-gallery {
-  display: flex;
-  overflow-x: auto;
-  padding: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
-  scrollbar-width: thin;
+  padding: 1rem 0;
 }
 
 .project-slide {
-  min-width: 300px;
+  min-width: 0; /* Reset min-width */
   background-color: white;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--shadow);
-  flex-shrink: 0;
   transition: transform 0.3s ease;
 }
 
@@ -508,11 +523,61 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .timeline-nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 100vh;
+    background: rgba(45, 64, 89, 0.7); /* Semi-transparent navy blue */
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 0;
+    backdrop-filter: blur(3px); /* Adds a subtle blur effect behind */
+  }
+
+  .company-bubble {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #f5f5f5; /* Light background for bubbles */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
     position: relative;
-    width: 100%;
-    height: 80px;
-    flex-direction: row;
-    padding: 0 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 5;
+    border: 2px solid rgba(255, 255, 255, 0.2); /* Light border */
+  }
+
+  .company-bubble::after {
+    content: attr(data-year);
+    position: absolute;
+    right: -70px;
+    color: #f5f5f5; /* Lighter text for better contrast */
+    font-size: 0.8rem;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .company-bubble.active {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    border-color: var(--secondary-color); /* Highlight active bubble */
+  }
+
+  .timeline-track::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Brighter line */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
   }
   
   .timeline-track {
@@ -521,23 +586,30 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: row;
   }
   
-  .timeline-track::before {
+  /* Add this to your styles.css file to make sure sections appear properly */
+  .experience-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 2rem;
+    opacity: 0.3; /* Start with low opacity */
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  .experience-section.active {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 2;
+  }
+
+  .experience-content {
+    max-width: 1200px;
+    margin: 0 auto;
     width: 100%;
-    height: 2px;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-  }
-  
-  .company-bubble::after {
-    top: -30px;
-    right: auto;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .experience-sections {
-    margin-left: 0;
   }
   
   /* Navigation adjustments */
@@ -596,5 +668,38 @@ h1, h2, h3, h4, h5, h6 {
   
   .project-slide {
     min-width: 100%;
+  }
+}
+
+/* PDF Presentation Block */
+.presentation-block {
+  margin-bottom: 3rem;
+}
+
+.pdf-container {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background-color: white;
+  margin-top: 1.5rem;
+}
+
+.presentation-preview {
+  width: 100%;
+  height: 500px; /* Adjust height as needed */
+  border: none;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .presentation-preview {
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .presentation-preview {
+    height: 300px;
   }
 }

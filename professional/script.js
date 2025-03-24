@@ -10,37 +10,37 @@ const companies = [
     id: "amazon-robotics",
     name: "Amazon Robotics",
     year: "2022",
-    logo: "amazon_logo.png"
+    logo: "amazon_robotics_logo.png"
   },
   {
     id: "medtronic",
     name: "Medtronic",
     year: "2021",
-    logo: "medtronic_logo.png"
+    logo: "medtronic_logo.jpg"
   },
   {
     id: "kairos-power",
     name: "Kairos Power",
     year: "2020",
-    logo: "kairos_logo.png"
+    logo: "kairos_power_logo.jpg"
   },
   {
     id: "applied-composites",
     name: "Applied Composites",
     year: "2019",
-    logo: "applied_logo.png"
+    logo: "applied_composites_logo.png"
   },
   {
     id: "boring-company",
     name: "The Boring Company",
     year: "2018",
-    logo: "boring_logo.png"
+    logo: "the_boring_company_logo.png"
   },
   {
     id: "parker-hannifin",
     name: "Parker Hannifin",
     year: "2017",
-    logo: "parker_logo.png"
+    logo: "parker_hannifin_logo.png"
   }
 ];
 
@@ -160,25 +160,50 @@ function navigateToCompany(companyId) {
   });
 }
 
-// Update active company based on scroll position
 function updateActiveCompanyOnScroll() {
   const sections = document.querySelectorAll('.experience-section');
   
   let activeSection = null;
-  const scrollPosition = window.scrollY + window.innerHeight / 2;
+  const windowHeight = window.innerHeight;
+  const scrollPosition = window.scrollY + (windowHeight / 2);
+  let highestVisibleRatio = 0;
+  let mostVisibleSection = null;
   
   // Find which section is currently most visible
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
-    const sectionBottom = sectionTop + section.offsetHeight;
+    const sectionHeight = section.offsetHeight;
+    const sectionBottom = sectionTop + sectionHeight;
     
-    // If we're within this section
-    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-      activeSection = section.id;
+    // Calculate how much of the section is visible as a ratio
+    const visibleTop = Math.max(sectionTop, window.scrollY);
+    const visibleBottom = Math.min(sectionBottom, window.scrollY + windowHeight);
+    const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+    const visibilityRatio = visibleHeight / sectionHeight;
+    
+    // Track which section has the highest visibility
+    if (visibilityRatio > highestVisibleRatio) {
+      highestVisibleRatio = visibilityRatio;
+      mostVisibleSection = section;
     }
   });
   
-  // Update active elements if we found an active section
+  // Only update active section if we have one with significant visibility
+  if (mostVisibleSection && highestVisibleRatio > 0.2) {
+    activeSection = mostVisibleSection.id;
+    
+    // Update classes only for the most visible section
+    sections.forEach(section => {
+      if (section.id === activeSection) {
+        section.classList.add('active');
+      } else if (highestVisibleRatio > 0.5) {
+        // Only remove active from other sections when we're well into (>50%) the new section
+        section.classList.remove('active');
+      }
+    });
+  }
+  
+  // Update active bubbles if we found an active section
   if (activeSection) {
     const bubbles = document.querySelectorAll('.company-bubble');
     bubbles.forEach(bubble => {
@@ -253,12 +278,58 @@ function initSectionScroll() {
   });
 }
 
+function setupContinuousScrolling() {
+  const sections = document.querySelectorAll('.experience-section');
+  let currentActiveSection = null;
+  
+  // Create an Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const section = entry.target;
+      
+      // When a section is significantly visible (more than 50%)
+      if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+        // Only remove active class from the previous section once we're well into the new section
+        if (currentActiveSection && currentActiveSection !== section) {
+          currentActiveSection.classList.remove('active');
+        }
+        
+        // Set current section as active
+        section.classList.add('active');
+        currentActiveSection = section;
+        
+        // Get the company ID to update the timeline
+        const companyId = section.id;
+        
+        // Update the active bubble
+        const bubbles = document.querySelectorAll('.company-bubble');
+        bubbles.forEach(bubble => {
+          if (bubble.getAttribute('data-company') === companyId) {
+            bubble.classList.add('active');
+          } else {
+            bubble.classList.remove('active');
+          }
+        });
+      }
+      // Don't remove the active class here - we'll only do that when we're well into the next section
+    });
+  }, {
+    threshold: 0.5 // Trigger when 50% of the element is visible
+  });
+  
+  // Observe all sections
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+}
+
 // Initialize everything when DOM is loaded
 window.addEventListener('DOMContentLoaded', function() {
   initTimeline();
   initSectionScroll();
   revealOnScroll(); // Initial check for elements in view on page load
-  
+  setupContinuousScrolling(); // Add this line
+
   // Set up scroll event for updating active company
   window.addEventListener('scroll', updateActiveCompanyOnScroll);
 });
