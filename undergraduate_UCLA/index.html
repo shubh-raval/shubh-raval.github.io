@@ -351,10 +351,16 @@
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     import { STLLoader } from 'three/addons/loaders/STLLoader.js';
     
-    // Make THREE available globally
-    window.THREE = THREE;
-    window.THREE.OrbitControls = OrbitControls;
-    window.THREE.STLLoader = STLLoader;
+    // Use Object.defineProperty instead of direct assignment
+    Object.defineProperty(window, 'THREE', {
+      value: {
+        ...THREE,
+        OrbitControls: OrbitControls,
+        STLLoader: STLLoader
+      },
+      writable: false,
+      configurable: false
+    });
     
   </script>
 

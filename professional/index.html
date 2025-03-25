@@ -340,16 +340,16 @@
               <div class="project-gallery">
                 <div class="stl-project-slide">
                   <div class="project-image">
-                      <div id="squealer-stl-viewer" class="cad-viewer" data-model="assets/models/squealer.stl">
+                      <div id="squealer-stl-viewer" class="cad-viewer" data-model="assets/models/Squealer.STL">
                           <!-- STL Viewer will be rendered here -->
                       </div>
-                      <div class="cad-controls">
-                          <div class="cad-control-btn" data-action="rotate">
-                              <i class="fas fa-sync-alt"></i>
-                          </div>
-                          <div class="cad-control-btn" data-action="reset">
-                              <i class="fas fa-home"></i>
-                          </div>
+                  </div>
+                  <div class="cad-controls">
+                      <div class="cad-control-btn" data-action="rotate">
+                          <i class="fas fa-sync-alt"></i>
+                      </div>
+                      <div class="cad-control-btn" data-action="reset">
+                          <i class="fas fa-home"></i>
                       </div>
                   </div>
                   <div class="project-description">
@@ -641,10 +641,16 @@
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     import { STLLoader } from 'three/addons/loaders/STLLoader.js';
     
-    // Make THREE available globally
-    window.THREE = THREE;
-    window.THREE.OrbitControls = OrbitControls;
-    window.THREE.STLLoader = STLLoader;
+    // Use Object.defineProperty instead of direct assignment
+    Object.defineProperty(window, 'THREE', {
+      value: {
+        ...THREE,
+        OrbitControls: OrbitControls,
+        STLLoader: STLLoader
+      },
+      writable: false,
+      configurable: false
+    });
     
   </script>
   <script src="script.js"></script>
