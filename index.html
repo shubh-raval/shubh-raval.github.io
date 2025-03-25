@@ -28,6 +28,21 @@
   <!-- Resume Section -->
   <div id="resume-container"></div>
 
+  <script src="js/content-preloader.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Preload all linked pages
+    contentPreloader.preloadAllContent([
+      '../undergraduate_UCLA/index.html',
+      '../graduate_GeorgiaTech/index.html',
+      '../professional/index.html',
+      '../personal/index.html',
+      '../contact/index.html'
+    ]);
 
+    // Setup navigation preloading
+    contentPreloader.setupNavigationPreloading();
+  });
+  </script>
 </body>
 </html>
