@@ -338,13 +338,23 @@
             <div class="content-block">
               <h3>Key Projects</h3>
               <div class="project-gallery">
-                <div class="project-slide">
+                <div class="stl-project-slide">
                   <div class="project-image">
-                    <div class="image-placeholder">Squealer Design</div>
+                      <div id="squealer-stl-viewer" class="cad-viewer" data-model="assets/models/squealer.stl">
+                          <!-- STL Viewer will be rendered here -->
+                      </div>
+                      <div class="cad-controls">
+                          <div class="cad-control-btn" data-action="rotate">
+                              <i class="fas fa-sync-alt"></i>
+                          </div>
+                          <div class="cad-control-btn" data-action="reset">
+                              <i class="fas fa-home"></i>
+                          </div>
+                      </div>
                   </div>
                   <div class="project-description">
-                    <h4>High-Temperature Pump Squealer Design</h4>
-                    <p>Designed precision squealers for installation in high-temperature fluoride salt pumps capable of detecting vertical and horizontal deflections smaller than 1/8-inch. Applied finite element analysis (FEA) to iteratively optimize the design for cyclic shear forces in extreme temperature environments. Created detailed technical drawings using GD&T for EDM manufacturing processes.</p>
+                      <h4>High-Temperature Pump Squealer Design</h4>
+                      <p>Designed precision squealers for installation in high-temperature fluoride salt pumps capable of detecting vertical and horizontal deflections smaller than 1/8-inch. Applied finite element analysis (FEA) to iteratively optimize the design for cyclic shear forces in extreme temperature environments. Created detailed technical drawings using GD&T for EDM manufacturing processes.</p>
                   </div>
                 </div>
                 <div class="project-slide">
@@ -593,7 +603,50 @@
     </div>
   </div>
 
+
   <!-- JavaScript file -->
+  <!-- Update your script section near the end of the page -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+    
+  <script type="module">
+    import { createViewer } from './stl-viewer.js';
+    
+    // Initialize viewer when document is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      // Find all elements with class 'cad-viewer' that have a data-model attribute
+      const viewerElements = document.querySelectorAll('.cad-viewer[data-model]');
+      
+      // Initialize each viewer with its corresponding model
+      viewerElements.forEach((element) => {
+        const modelPath = element.getAttribute('data-model');
+        const viewerId = element.id;
+        
+        if (viewerId && modelPath) {
+          createViewer(viewerId, modelPath);
+        }
+      });
+    });
+  </script>
+
+  <!-- Load Three.js modules directly -->
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { STLLoader } from 'three/addons/loaders/STLLoader.js';
+    
+    // Make THREE available globally
+    window.THREE = THREE;
+    window.THREE.OrbitControls = OrbitControls;
+    window.THREE.STLLoader = STLLoader;
+    
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
