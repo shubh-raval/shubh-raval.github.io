@@ -149,10 +149,10 @@ export function createViewer(containerId, modelPath = 'default_model.stl') {
   
   animate();
   
-  // Set up control buttons
+  // Modify the setupControls function in your stl-viewer.js
   const setupControls = () => {
-    // Find all control buttons
-    const buttons = container.parentNode.querySelectorAll('.cad-control-btn');
+    // Find control buttons related to this specific viewer
+    const buttons = document.querySelectorAll(`.cad-control-btn[data-target="${containerId}"], .cad-control-btn:not([data-target])`);
     
     buttons.forEach(button => {
       button.addEventListener('click', function() {
