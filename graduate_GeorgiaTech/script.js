@@ -163,10 +163,29 @@ function initExpandableContent() {
   });
 }
 
+function initPaperToggle() {
+  const paperSections = document.querySelectorAll('.paper-section');
+  
+  paperSections.forEach(section => {
+    const toggleButton = section.querySelector('.toggle-paper');
+    const paperContainer = section.querySelector('.paper-container');
+    
+    if (toggleButton && paperContainer) {
+      toggleButton.addEventListener('click', () => {
+        const isCurrentlyVisible = paperContainer.style.display === 'block';
+        
+        paperContainer.style.display = isCurrentlyVisible ? 'none' : 'block';
+        toggleButton.textContent = isCurrentlyVisible ? 'Show Full Paper' : 'Hide Full Paper';
+      });
+    }
+  });
+}
+
 
 // Initialize all page functionality
 function initUndergraduatePage() {
   initProjectTabs();
   initExpandableContent();
+  initPaperToggle();
   revealOnScroll(); // Call once on load to reveal visible elements
 }
