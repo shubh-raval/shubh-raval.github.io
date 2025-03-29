@@ -58,8 +58,8 @@
     <div class="project-navigation reveal">
       <button class="project-tab active" data-project="ME6101">ME6101 Engineering Design</button>
       <button class="project-tab" data-project="ME6102">ME6102 Designing Open Engineering System</button>
-      <button class="project-tab" data-project="ME6103">ME6103 Optimization Engineering</button>
-      <button class="project-tab" data-project="ME6407">ME6407 Robotics</button>
+      <button class="project-tab" data-project="ME6103">ME6103 Optimization Engineering (In Progress)</button>
+      <button class="project-tab" data-project="ME6407">ME6407 Robotics (In Progress)</button>
 
     </div>
     
@@ -127,8 +127,78 @@
       
     </div>
     </div>
+        <!-- ME6102 Project -->
+    <div class="project-content" id="ME6102-project">
+      <div class="content-block reveal">
+        <div class="content-block-header">
+          <div class="block-image">
+            <img src="assets/images/me6101_presentation_image.jpg" alt="ME6101 Design Analysis Project">
+          </div>
+          
+          <div class="block-content">
+            <h3>Course Overview</h3>
+            <p>The course focused on the engineering design process cementing how to turn customer needs into engineering requirements and how to develop elegant solutions using techniques like analogous domains, mind maps, and pugh charts.</p>
+            
+            <div class="content-description">
+              <h4>Final Project: Cube Satellite Design Proposal</h4>
+              <p>My group focused on going through the design and concept process to make a proposal for a novel cube statellite mission. Along with the other activities I focused on protoyping and producing the proof of concept for the silicion menstrual cup.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="presentation-block">
+          <iframe src="assets/pdfs/ME6102FinalPresentation.pdf" class="presentation-preview"></iframe>
+        </div>
+        
+        <!-- New Quad Media Gallery -->
+        <div class="quad-media-gallery">
+          <!-- Top Left: CAD Viewer -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">3D Model Viewer</div>
+            <div class="quad-media-content">
+              <div id="me6102-stl-viewer" class="cad-viewer" data-model="assets/models/ME6102_Prototype.stl"></div>
+            </div>
+          </div>
+          
+          <!-- Top Right: Video -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">Pseudo "Zero Gravity Test"</div>
+            <div class="quad-media-content">
+              <video src="assets/videos/zero_gravity_test.MOV" autoplay loop muted></video>
+            </div>
+          </div>
+          
+          <!-- Bottom Left: Image 1 -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">PLA Mold for Prototype</div>
+            <div class="quad-media-content">
+              <img src="assets/images/printed_prototype.jpg" alt="Printed Prototype">
+            </div>
+          </div>
+          
+          <!-- Bottom Right: Image 2 -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">Released Mold</div>
+            <div class="quad-media-content">
+              <img src="assets/images/release_mold.jpg" alt="Release Mold">
+            </div>
+          </div>
+        </div>
+        
+        <!-- CAD Controls - Moved below the gallery but still accessible -->
+        <div class="cad-controls">
+          <h3>Cad Control Buttons</h3>
+          <div class="cad-control-btn" data-action="rotate" data-target="me6102-stl-viewer">
+            <i class="fas fa-sync-alt"></i>
+          </div>
+          <div class="cad-control-btn" data-action="reset" data-target="me6102-stl-viewer">
+            <i class="fas fa-home"></i>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <!-- ME6102 Project -->
+    <!-- ME6102 Project
     <div class="project-content" id="ME6102-project">
     <div class="content-block reveal">
       <div class="content-block-header">
@@ -153,16 +223,28 @@
       
       <div class="media-gallery">
         <div class="media-item">
-          <img src="assets/images/me6102_analysis1.jpg" alt="Analysis Result 1">
+          <img src="assets/images/printed_prototype.jpg" alt="Analysis Result 1">
         </div>
         <div class="media-item">
-          <img src="assets/images/me6102_analysis2.jpg" alt="Analysis Result 2">
+          <img src="assets/images/release_mold.jpg" alt="Analysis Result 2">
+        </div>
+        <div class="media-item">
+          <video src="assets/videos/zero_gravity_test.MOV" alt="Analysis Result 2">
         </div>
       </div>
       
       <div class="cad-model-container">
-        <div id="me6102-cad-viewer" class="cad-viewer" data-model="path/to/model.stl"></div>
+        <div id="me6102-stl-viewer" class="cad-viewer" data-model="assets/models/ME6102_Prototype.stl"></div>
       </div>
+      <div class="cad-controls">
+        <div class="cad-control-btn" data-action="rotate" data-target="me6102-stl-viewer">
+            <i class="fas fa-sync-alt"></i>
+        </div>
+        <div class="cad-control-btn" data-action="reset" data-target="me6102-stl-viewer">
+            <i class="fas fa-home"></i>
+      </div> -->
+
+    </div>
     </div>
     </div>
 
@@ -244,16 +326,21 @@
     });
   </script>
 
-  <!-- Load Three.js modules directly -->
   <script type="module">
     import * as THREE from 'three';
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     import { STLLoader } from 'three/addons/loaders/STLLoader.js';
     
-    // Make THREE available globally
-    window.THREE = THREE;
-    window.THREE.OrbitControls = OrbitControls;
-    window.THREE.STLLoader = STLLoader;
+    // Use Object.defineProperty instead of direct assignment
+    Object.defineProperty(window, 'THREE', {
+      value: {
+        ...THREE,
+        OrbitControls: OrbitControls,
+        STLLoader: STLLoader
+      },
+      writable: false,
+      configurable: false
+    });
     
   </script>
 

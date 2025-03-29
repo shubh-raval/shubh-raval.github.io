@@ -507,6 +507,12 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: cover;
 }
 
+.media-gallery .media-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .media-gallery .media-item:hover {
   transform: scale(1.05);
 }
@@ -526,6 +532,30 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
 }
 
+.cad-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 10px 0;
+}
+
+.cad-control-btn {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(255,255,255,0.8);
+  color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.cad-control-btn:hover {
+  transform: scale(1.1);
+  background-color: white;
+}
 .code-container {
   background-color: #f4f4f4;
   border-radius: 8px;
@@ -553,6 +583,83 @@ h1, h2, h3, h4, h5, h6 {
   background-color: rgba(234, 84, 85, 0.08);
 }
 
+
+/* ===== QUAD MEDIA GALLERY STYLES ===== */
+.quad-media-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.5rem;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.quad-media-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.quad-media-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.quad-media-header {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 0.15rem;
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.quad-media-content {
+  flex: 1;
+  height: calc(100% - 2.5rem);
+  width: 100%;
+}
+
+.quad-media-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.quad-media-content video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.quad-cad-container {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+  .quad-media-gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+  }
+  
+  .quad-media-item {
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .quad-media-item {
+    height: 200px;
+  }
+}
 /* ===== GENERIC BUTTON STYLES ===== */
 .btn {
   display: inline-block;
@@ -728,9 +835,7 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 
-  .cad-model-container {
-    height: 300px;
-  }
+  
 }
 
 @media screen and (max-width: 480px) {
@@ -763,7 +868,7 @@ h1, h2, h3, h4, h5, h6 {
 .presentation-block,
 .paper-section,
 .media-gallery,
-.cad-model-container,
+
 .matlab-code-section {
   width: 100%;
   max-width: 800px;
