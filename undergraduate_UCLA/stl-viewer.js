@@ -46,7 +46,10 @@ export function createViewer(containerId, modelPath = 'default_model.stl') {
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.dampingFactor = 0.25;
-  
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.25;
+  controls.autoRotate = true;  // Enable auto-rotation by default
+  controls.autoRotateSpeed = 2.0;
   // Track model mesh
   let mesh = null;
   
@@ -137,6 +140,7 @@ export function createViewer(containerId, modelPath = 'default_model.stl') {
     controls.enableZoom = true;
     controls.enablePan = true;
     controls.autoRotate = false;
+    controls.autoRotateSpeed = 2.0;
     controls.update();
   }
   
@@ -149,7 +153,7 @@ export function createViewer(containerId, modelPath = 'default_model.stl') {
   
   animate();
   
-  // Set up control buttons
+  // Modify the setupControls function in your stl-viewer.js
   const setupControls = () => {
     // Find control buttons related to this specific viewer
     const buttons = document.querySelectorAll(`.cad-control-btn[data-target="${containerId}"], .cad-control-btn:not([data-target])`);
@@ -247,6 +251,27 @@ export function createViewer(containerId, modelPath = 'default_model.stl') {
   window.stlViewers[containerId] = viewerInstance;
   
   return viewerInstance;
+}
+
+// Add this function to your stl-viewer.js file
+export function setAutoRotation(containerId, enable, speed = 2.0) {
+  const viewer = window.stlViewers[containerId];
+  
+  if (!viewer) {
+    console.error(`Viewer with id "${containerId}" not found`);
+    return false;
+  }
+  
+  // Set auto-rotation state
+  viewer.controls.autoRotate = enable;
+  
+  // Set rotation speed if provided
+  if (speed !== undefined) {
+    viewer.controls.autoRotateSpeed = speed;
+  }
+  
+  // Return current auto-rotation state
+  return viewer.controls.autoRotate;
 }
 
 // Function to update viewer when tab visibility changes

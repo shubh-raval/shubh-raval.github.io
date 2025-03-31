@@ -785,6 +785,88 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== QUAD MEDIA GALLERY STYLES ===== */
+.quad-media-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 1.5rem;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.quad-media-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.quad-media-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.quad-media-header {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 0.15rem;
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.quad-media-content {
+  flex: 1;
+  position: relative;
+}
+.quad-media-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.cad-viewer {
+  width: 100%;
+  height: 100%;
+}
+.quad-media-content video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.quad-cad-container {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+  .quad-media-gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+  }
+  
+  .quad-media-item {
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .quad-media-item {
+    height: 200px;
+  }
+}
+
 /* Project tabs and content styling */
 .project-navigation {
   display: flex;

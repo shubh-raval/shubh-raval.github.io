@@ -224,82 +224,133 @@
     <div class="section-container">
       <h2 class="section-title reveal">Other Projects</h2>
       
-      <div class="card-grid">
-        <!-- CAD Class Card -->
-        <div class="card reveal">
-          <div class="card-image">[CAD CLASS IMAGE]</div>
-          <div class="card-content">
-            <h3 class="card-title">CAD Class</h3>
-            <p class="card-text">Developed advanced 3D modeling skills using industry-standard CAD software to create detailed mechanical components and assemblies.</p>
-            
-            <!-- Expandable content -->
-            <div class="expandable-content" id="cad-class-details">
-              <div class="media-gallery">
-                <div class="media-item">
-                  [ROBOT IMAGE 1]
-                </div>
-                <div class="media-item">
-                  [ROBOT IMAGE 2]
-                </div>
-              </div>
-            </div>
-            
-            <div class="expand-button" data-target="cad-class-details">
-              View Model <i class="fas fa-chevron-down"></i>
+      <!-- Project Navigation Tabs -->
+      <div class="project-navigation reveal">
+        <button class="project-tab active" data-project="wheel-project">CAD Class</button>
+        <button class="project-tab" data-project="zero-gravity">UC Riverside Clubs and Projects</button>
+        <button class="project-tab" data-project="prototype-mold">Prototype Mold</button>
+      </div>
+      
+      <!-- Wheel Design Project -->
+      <div class="project-content active" id="wheel-project-content">
+        <div class="quad-media-gallery">
+          <!-- Top Left: CAD Viewer -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">Final Project Component</div>
+            <div class="quad-media-content">
+              <img src="assets/images/cad_rearwheel_orig.png" alt="Rear Wheel Model"/>
             </div>
           </div>
-        </div>
-        
-        <!-- FSAE Chassis Team Card -->
-        <div class="card reveal">
-          <div class="card-image">[FSAE IMAGE]</div>
-          <div class="card-content">
-            <h3 class="card-title">FSAE Chassis Team</h3>
-            <p class="card-text">Contributed to the design and analysis of the chassis for UC Berkeley's Formula SAE race car competition team.</p>
-            
-            <!-- Expandable content -->
-            <div class="expandable-content" id="fsae-details">
-              <div class="media-gallery">
-                <div class="media-item">
-                  [ROBOT IMAGE 1]
-                </div>
-                <div class="media-item">
-                  [ROBOT IMAGE 2]
-                </div>
-              </div>
-            </div>
-            
-            <div class="expand-button" data-target="fsae-details">
-              View Chassis <i class="fas fa-chevron-down"></i>
+          
+          <!-- Top Right: Design Process -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">Final Project</div>
+            <div class="quad-media-content">
+              <img src="assets/images/cad-picture_orig.png" alt="Design Process"/>
             </div>
           </div>
-        </div>
-        
-        <!-- ASME Combat Robotics Card -->
-        <div class="card reveal">
-          <div class="card-image">[COMBAT ROBOT IMAGE]</div>
-          <div class="card-content">
-            <h3 class="card-title">ASME Combat Robotics</h3>
-            <p class="card-text">Designed and built combat robots as part of the American Society of Mechanical Engineers student chapter, competing in intercollegiate tournaments.</p>
-            
-            <!-- Expandable content -->
-            <div class="expandable-content" id="asme-details">
-              <div class="media-gallery">
-                <div class="media-item">
-                  [ROBOT IMAGE 1]
-                </div>
-                <div class="media-item">
-                  [ROBOT IMAGE 2]
-                </div>
-              </div>
+          
+          <!-- Bottom Left: Stress Analysis -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">Final Project Component</div>
+            <div class="quad-media-content">
+              <img src="assets/images/cad_caster.png" alt="Stress Analysis"/>
             </div>
-            
-            <div class="expand-button" data-target="asme-details">
-              See More <i class="fas fa-chevron-down"></i>
+          </div>
+          
+          <!-- Bottom Right: Final Product -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">Solidworks Certified Associate</div>
+            <div class="quad-media-content">
+              <img src="assets/images/certificate_orig.png" alt="Final Product"/>
             </div>
           </div>
         </div>
       </div>
+      
+      <!-- Zero Gravity Test Project -->
+      <div class="project-content" id="zero-gravity-content">
+        <div class="quad-media-gallery">
+          <!-- Top Left: Test Setup -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">FSAE Impact Attenuator</div>
+            <div class="quad-media-content">
+              <img src="assets/images/impact-attenuator.png" alt="Test Setup"/>
+            </div>
+          </div>
+          
+          <!-- Top Right: Simulation -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">Matlab Space Shuttle Tile Sizing</div>
+            <div class="quad-media-content">
+              <img src="assets/images/matlab_spaceshuttle_gui.png" alt="Zero-G Simulation"/>
+            </div>
+          </div>
+          
+          <!-- Bottom Left: Data Collection -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">FSAE Chassis</div>
+            <div class="quad-media-content">
+              <img src="assets/images/FSAE_chassis.jpg" alt="Data Collection"/>
+            </div>
+          </div>
+          
+          <!-- Bottom Right: Results -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">First Chassis Prototype Model</div>
+            <div class="quad-media-content">
+              <div id="chassis-stl-viewer" class="cad-viewer" data-model="assets/models/chassis_first_attempt.stl"></div>
+            </div>
+          </div>
+        </div>
+        <div class="cad-controls">
+          <h3>Cad Control Buttons</h3>
+          <div class="cad-control-btn" data-action="rotate" data-target="chassis-stl-viewer">
+            <i class="fas fa-sync-alt"></i>
+          </div>
+          <div class="cad-control-btn" data-action="reset" data-target="chassis-stl-viewer">
+            <i class="fas fa-home"></i>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Prototype Mold Project -->
+      <div class="project-content" id="prototype-mold-content">
+        <div class="quad-media-gallery">
+          <!-- Top Left: CAD Design -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">CAD Design</div>
+            <div class="quad-media-content">
+              <img src="assets/images/cad_rearwheel_orig.png" alt="CAD Design"/>
+            </div>
+          </div>
+          
+          <!-- Top Right: PLA Printing -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">PLA Printing</div>
+            <div class="quad-media-content">
+              <img src="assets/images/cad-picture_orig.png" alt="PLA Printing"/>
+            </div>
+          </div>
+          
+          <!-- Bottom Left: PLA Mold -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">PLA Mold for Prototype</div>
+            <div class="quad-media-content">
+              <img src="assets/images/cad_caster.png" alt="PLA Mold"/>
+            </div>
+          </div>
+          
+          <!-- Bottom Right: Released Mold -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">Released Mold</div>
+            <div class="quad-media-content">
+              <img src="assets/images/certificate_orig.png" alt="Released Mold"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </div>
   </section>
 
@@ -345,7 +396,6 @@
     });
   </script>
 
-  <!-- Load Three.js modules directly -->
   <script type="module">
     import * as THREE from 'three';
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';

@@ -112,34 +112,76 @@ window.addEventListener('DOMContentLoaded', initSectionScroll);
 
 // Function to handle project tab navigation
 function initProjectTabs() {
-  const projectTabs = document.querySelectorAll('.project-tab');
-  const projectContents = document.querySelectorAll('.project-content');
+  const mainSection = document.getElementById('main-content');
+  const altSection = document.getElementById('section-alt-main');
   
-  projectTabs.forEach(tab => {
-    tab.addEventListener('click', function() {
-      // Remove active class from all tabs and contents
-      projectTabs.forEach(t => t.classList.remove('active'));
-      projectContents.forEach(c => c.classList.remove('active'));
-      
-      // Add active class to clicked tab
-      this.classList.add('active');
-          // Update any STL viewers in the newly visible tab
-      setTimeout(() => {
-        const activeTab = document.querySelector('.project-content.active');
-        if (activeTab) {
-          const viewers = activeTab.querySelectorAll('.cad-viewer');
-          viewers.forEach(viewer => {
-            if (viewer.id && window.stlViewers[viewer.id]) {
-              window.stlViewers[viewer.id].resize();
-            }
-          });
-        }
-      }, 50); // Small timeout to ensure DOM is updated
-      // Show corresponding content
-      const projectId = this.getAttribute('data-project');
-      document.getElementById(`${projectId}-project`).classList.add('active');
+  // Handle main section tabs
+  if (mainSection) {
+    const mainTabs = mainSection.querySelectorAll('.project-tab');
+    const mainContents = mainSection.querySelectorAll('.project-content');
+    
+    mainTabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        // Remove active class from all tabs and contents in this section
+        mainTabs.forEach(t => t.classList.remove('active'));
+        mainContents.forEach(c => c.classList.remove('active'));
+        
+        // Add active class to clicked tab
+        this.classList.add('active');
+        
+        // Show corresponding content
+        const projectId = this.getAttribute('data-project');
+        document.getElementById(`${projectId}-project`).classList.add('active');
+        
+        // Update any STL viewers in the newly visible tab
+        setTimeout(() => {
+          const activeTab = mainSection.querySelector('.project-content.active');
+          if (activeTab) {
+            const viewers = activeTab.querySelectorAll('.cad-viewer');
+            viewers.forEach(viewer => {
+              if (viewer.id && window.stlViewers[viewer.id]) {
+                window.stlViewers[viewer.id].resize();
+              }
+            });
+          }
+        }, 50); // Small timeout to ensure DOM is updated
+      });
     });
-  });
+  }
+  
+  // Handle alternative section tabs
+  if (altSection) {
+    const altTabs = altSection.querySelectorAll('.project-tab');
+    const altContents = altSection.querySelectorAll('.project-content');
+
+    altTabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        // Remove active class from all tabs and contents in this section
+        altTabs.forEach(t => t.classList.remove('active'));
+        altContents.forEach(c => c.classList.remove('active'));
+        
+        // Add active class to clicked tab
+        this.classList.add('active');
+        
+        // Show corresponding content
+        const projectId = this.getAttribute('data-project');
+        document.getElementById(`${projectId}-content`).classList.add('active');
+        
+        // Update any STL viewers in the newly visible tab
+        setTimeout(() => {
+          const activeTab = altSection.querySelector('.project-content.active');
+          if (activeTab) {
+            const viewers = activeTab.querySelectorAll('.cad-viewer');
+            viewers.forEach(viewer => {
+              if (viewer.id && window.stlViewers && window.stlViewers[viewer.id]) {
+                window.stlViewers[viewer.id].resize();
+              }
+            });
+          }
+        }, 50); //Small timeout to ensure DOM is updated
+      });
+    });
+  }
 }
 
 // Handle expandable content sections
