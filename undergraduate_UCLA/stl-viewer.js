@@ -149,9 +149,15 @@ export function createViewer(containerId, modelPath = 'default_model.stl') {
     requestAnimationFrame(animate);
     controls.update();
     renderer.render(scene, camera);
+    // Only render if container is visible
+    if (container.offsetHeight > 0 && container.offsetWidth > 0) {
+      controls.update();
+      renderer.render(scene, camera);
+    }
   }
   
   animate();
+  
   
   // Modify the setupControls function in your stl-viewer.js
   const setupControls = () => {
@@ -252,7 +258,18 @@ export function createViewer(containerId, modelPath = 'default_model.stl') {
   
   return viewerInstance;
 }
-
+// Add this function to your stl-viewer.js
+export function reinitializeViewer(containerId) {
+  const viewer = window.stlViewers[containerId];
+  if (viewer) {
+    // Force a complete re-render
+    viewer.resize();
+    if (viewer.scene && viewer.camera) {
+      viewer.controls.update();
+      viewer.renderer.render(viewer.scene, viewer.camera);
+    }
+  }
+}
 // Add this function to your stl-viewer.js file
 export function setAutoRotation(containerId, enable, speed = 2.0) {
   const viewer = window.stlViewers[containerId];

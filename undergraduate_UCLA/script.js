@@ -154,6 +154,7 @@ function initProjectTabs() {
     const altTabs = altSection.querySelectorAll('.project-tab');
     const altContents = altSection.querySelectorAll('.project-content');
 
+    // Modify your tab click handler in initProjectTabs function
     altTabs.forEach(tab => {
       tab.addEventListener('click', function() {
         // Remove active class from all tabs and contents in this section
@@ -165,24 +166,58 @@ function initProjectTabs() {
         
         // Show corresponding content
         const projectId = this.getAttribute('data-project');
-        document.getElementById(`${projectId}-content`).classList.add('active');
+        const contentElement = document.getElementById(`${projectId}-content`);
+        contentElement.classList.add('active');
         
-        // Update any STL viewers in the newly visible tab
+        // Force update any STL viewers in the newly visible tab
         setTimeout(() => {
-          const activeTab = altSection.querySelector('.project-content.active');
-          if (activeTab) {
-            const viewers = activeTab.querySelectorAll('.cad-viewer');
-            viewers.forEach(viewer => {
-              if (viewer.id && window.stlViewers && window.stlViewers[viewer.id]) {
-                window.stlViewers[viewer.id].resize();
-              }
-            });
-          }
-        }, 50); //Small timeout to ensure DOM is updated
+          const viewers = contentElement.querySelectorAll('.cad-viewer');
+          viewers.forEach(viewer => {
+            if (viewer.id && window.stlViewers && window.stlViewers[viewer.id]) {
+              // Force a resize and render cycle
+              window.stlViewers[viewer.id].resize();
+              window.stlViewers[viewer.id].renderer.render(
+                window.stlViewers[viewer.id].scene, 
+                window.stlViewers[viewer.id].camera
+              );
+            }
+          });
+        }, 100); // Slightly longer timeout to ensure DOM is fully updated
       });
     });
   }
 }
+
+// Add to your script.js file
+function reinitializeVisibleViewers() {
+  // Find all active tabs
+  const activeTabs = document.querySelectorAll('.project-content.active');
+  
+  activeTabs.forEach(tab => {
+    // Find all viewers in active tabs
+    const viewers = tab.querySelectorAll('.cad-viewer');
+    viewers.forEach(viewer => {
+      if (viewer.id && window.stlViewers && window.stlViewers[viewer.id]) {
+        // Import the reinitializeViewer function and use it here
+        if (typeof reinitializeViewer === 'function') {
+          reinitializeViewer(viewer.id);
+        } else {
+          // Fallback if function not available
+          window.stlViewers[viewer.id].resize();
+        }
+      }
+    });
+  });
+}
+
+
+// Call when tabs are switched
+document.querySelectorAll('.project-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    // Wait for tab switch animation to complete
+    setTimeout(reinitializeVisibleViewers, 200);
+  });
+});
 
 // Handle expandable content sections
 function initExpandableContent() {

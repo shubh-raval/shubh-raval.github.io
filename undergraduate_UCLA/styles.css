@@ -412,202 +412,6 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.8;
 }
 
-/* ===== CARD GRID ===== */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.card {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  transition: transform var(--transition-fast);
-}
-
-.card:hover {
-  transform: translateY(-10px);
-}
-
-.card-image {
-  height: 200px;
-  background-color: #ddd;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #999;
-  font-weight: 500;
-}
-
-.card-content {
-  padding: 1.5rem;
-}
-
-.card-title {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--primary-color);
-}
-
-.card-text {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-
-.card-link {
-  display: inline-block;
-  color: var(--secondary-color);
-  font-weight: 600;
-  text-decoration: none;
-  position: relative;
-}
-
-.card-link::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -3px;
-  left: 0;
-  background-color: var(--secondary-color);
-  transition: width var(--transition-fast);
-}
-
-.card-link:hover::after {
-  width: 100%;
-}
-
-/* ===== TIMELINE ===== */
-.timeline {
-  position: relative;
-  max-width: 800px;
-  margin: 3rem auto;
-}
-
-.timeline::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: var(--primary-color);
-  left: 50%;
-  margin-left: -2px;
-}
-
-.timeline-item {
-  padding: 1rem 0;
-  position: relative;
-  width: 50%;
-  margin-bottom: 2rem;
-}
-
-.timeline-item:nth-child(odd) {
-  left: 0;
-  padding-right: 2rem;
-}
-
-.timeline-item:nth-child(even) {
-  left: 50%;
-  padding-left: 2rem;
-}
-
-.timeline-content {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-}
-
-.timeline-date {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: var(--secondary-color);
-  color: white;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  border-radius: 4px;
-}
-
-.timeline-title {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-  color: var(--primary-color);
-}
-
-.timeline-text {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* Dot marker for timeline */
-.timeline-item::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--secondary-color);
-  top: 1.5rem;
-}
-
-.timeline-item:nth-child(odd)::after {
-  right: -10px;
-}
-
-.timeline-item:nth-child(even)::after {
-  left: -10px;
-}
-
-/* ===== CALL TO ACTION ===== */
-.cta-container {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: var(--shadow);
-  padding: 3rem;
-  text-align: center;
-  margin-top: 4rem;
-}
-
-.cta-container h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  color: var(--primary-color);
-}
-
-.cta-container p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.btn {
-  display: inline-block;
-  padding: 1rem 2rem;
-  background-color: var(--primary-color);
-  color: var(--text-light);
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: 4px;
-  transition: transform var(--transition-fast),
-              box-shadow var(--transition-fast);
-  margin: 0 0.5rem;
-}
-
-.btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-.btn-secondary {
-  background-color: var(--secondary-color);
-}
 
 /* ===== ANIMATIONS ===== */
 @keyframes fadeInUp {
@@ -803,6 +607,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   height: 300px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
 }
@@ -833,16 +638,29 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   left: 0;
 }
-.cad-viewer {
-  width: 100%;
-  height: 100%;
-}
 .quad-media-content video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+.quad-media-content .cad-viewer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quad-media-content canvas {
+  position: static !important;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
 .quad-cad-container {
   width: 100%;
   height: 100%;
@@ -907,14 +725,20 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
-.project-content {
-  display: none;
-}
-
 .project-content.active {
   display: block;
   animation: fadeIn 0.5s ease;
 }
+
+/* Make sure hidden containers maintain dimensions */
+.project-content {
+  display: none;
+  height: auto;
+  min-height: 400px; /* Adjust as needed */
+}
+
+
+
 
 /* Expandable content styling */
 .expandable-content {
