@@ -71,12 +71,12 @@ function initResumeToggle() {
       title: "Project Management Resume"
     }
   };
-
+ 
   const toggleButtons = document.querySelectorAll('.toggle-btn');
   const resumeIframe = document.getElementById('resume-iframe');
   const downloadBtn = document.getElementById('download-btn');
   let currentResume = 'hardware';
-
+ 
   toggleButtons.forEach(button => {
     button.addEventListener('click', function() {
       const resumeType = this.getAttribute('data-resume');
@@ -95,10 +95,23 @@ function initResumeToggle() {
       };
     });
   });
-
+ 
+  // Mobile-friendly download handling
+  downloadBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const link = document.createElement('a');
+    link.href = resumeFiles[currentResume].file;
+    link.download = resumeFiles[currentResume].file.split('/').pop();
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+ 
+  // Initialize default download
   downloadBtn.href = resumeFiles[currentResume].file;
   downloadBtn.setAttribute('download', resumeFiles[currentResume].file.split('/').pop());
-}
+ }
 // Navbar functionality
 function initNavbar() {
   const navbar = document.getElementById('navbar');
