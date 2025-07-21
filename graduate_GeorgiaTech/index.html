@@ -57,8 +57,8 @@
     <div class="project-navigation reveal">
       <button class="project-tab active" data-project="ME6101">ME6101 Engineering Design</button>
       <button class="project-tab" data-project="ME6102">ME6102 Designing Open Engineering System</button>
-      <button class="project-tab" data-project="ME6103">ME6103 Optimization Engineering (In Progress)</button>
-      <button class="project-tab" data-project="ME6407">ME6407 Robotics (In Progress)</button>
+      <button class="project-tab" data-project="ME6103">ME6103 Optimization Engineering</button>
+      <button class="project-tab" data-project="ME6407">ME6407 Robotics</button>
 
     </div>
     
@@ -122,6 +122,43 @@
           <button class="btn btn-secondary toggle-paper">Show Full Paper</button>
           <div class="paper-container" style="display: none;">
             <iframe src="assets/pdfs/ME6103 Final.pdf" class="paper-preview"></iframe>
+          </div>
+        </div>
+         <!-- New Quad Media Gallery -->
+         <div class="quad-media-gallery">
+          <!-- Top Left: CAD Viewer -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">Hand-Written Genetic Algorithm</div>
+            <div class="quad-media-content">
+              <img src="assets/images/manualGA.jpg" alt="Hand-Written Genetic Algorithm">
+            </div>
+          </div>
+          
+          <!-- Top Right: Video -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">Pareto Frontier with Weighted Sums for Multi-Objective Optimization of Heat Exchanger</div>
+            <div class="quad-media-content">
+              <img src="assets/images/HeatExachangeMOO.jpg" alt="Pareto Frontier with Weighted Sums for Multi-Objective Optimization of Heat Exchanger">
+            </div>
+          </div>
+          
+          <!-- Bottom Left: Image 1 -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">Metamodeling via Gaussian Process Regression and Kriging </div>
+            <div class="quad-media-content">
+              <img src="assets/images/krigingmetamodel.jpg" alt="Metamodeling via Gaussian Process Regression and Kriging">
+            </div>
+          </div>
+          
+          <!-- Bottom Right: Image 2 -->
+          <div class="quad-media-item">
+            <div class="quad-media-header">Beam Deflection Meta Model Using Halton Sequenced FEA Data and a GPR Metamodel approach</div>
+            <div class="quad-media-content">
+              <img src="assets/images/FeaMetaModel.jpg" alt="Beam Deflection Meta Model Using Halton Sequenced FEA Data and a GPR Metamodel approach">
+            </div>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/shubh-raval/ME6103-Optimization" class="btn">View Full Repository</a>
           </div>
         </div>
       </div>
@@ -207,32 +244,312 @@
     <div class="content-block reveal">
       <div class="content-block-header">
         <div class="block-image">
-          <img src="assets/images/me6407_robotics.jpg" alt="Robotics Project Overview">
+          <video autoplay loop muted>
+            <source src="assets/videos/CartesianTorqueControl.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="block-content">
+          <h3>Course Overview</h3>
+          <p>Foundations for the analysis and mathematical development of serial open chain manipulators with various MATLAB and Simscape models developed throughout the class.</p>
+          
+          <div class="content-description">
+            <h4>Final Project: Cartesian Torque Control of PUMA robot arm to draw word and path plan drawing consecutive circles</h4>
+            <p>For this we had to develop the simulink model, write a torque control method, then tune the gains for that approach for as fast as possible motion while ensuring the Absolute error and root mean square error are below a threshold.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- New Quad Media Gallery -->
+      <div class="quad-media-gallery">
+        <!-- Top Left: CAD Viewer -->
+        <div class="quad-media-item">
+          <div class="quad-media-header">Circles Motion Path and true Trajectory for Torque Control</div>
+          <div class="quad-media-content">
+            <img src="assets/images/circlestraj.jpg" alt="Hand-Written Genetic Algorithm">
+          </div>
         </div>
         
-        <div class="block-content">
-          <h3>Introduction to Robotics</h3>
-          <p>Focusing on robotic arms with various MATLAB and Simscape models developed throughout the class.</p>
+        <!-- Top Right: Video -->
+        <div class="quad-media-item">
+          <div class="quad-media-header">Error Analysis of Circle Motion Path</div>
+          <div class="quad-media-content">
+            <img src="assets/images/error_analysis.jpg" alt="Pareto Frontier with Weighted Sums for Multi-Objective Optimization of Heat Exchanger">
+          </div>
+        </div>
+        
+        <!-- Bottom Left: Image 1 -->
+        <div class="quad-media-item">
+          <div class="quad-media-header">Maximized Manipulability for 3R robot poses</div>
+          <div class="quad-media-content">
+            <img src="assets/images/Manipulability.jpg" alt="Metamodeling via Gaussian Process Regression and Kriging">
+          </div>
+        </div>
+        
+        <!-- Bottom Right: Image 2 -->
+        <div class="quad-media-item">
+          <div class="quad-media-header">3R Robot Pose maximization via Manipulability in Inverse Kinematics Solver</div>
+          <div class="quad-media-content">
+            <img src="assets/images/3r.jpg" alt="Beam Deflection Meta Model Using Halton Sequenced FEA Data and a GPR Metamodel approach">
+          </div>
         </div>
       </div>
       
-      <div class="media-gallery">
-        <div class="media-item">
-          <img src="assets/images/me6407_model1.jpg" alt="Robotics Model 1">
-        </div>
-        <div class="media-item">
-          <img src="assets/images/me6407_model2.jpg" alt="Robotics Model 2">
-        </div>
+      <div class="project-links">
+        <a href="https://github.com/shubh-raval/ME6407-Robotics" class="btn">View Full Repository</a>
       </div>
       
-      <div class="matlab-code-section">
-        <button class="btn toggle-code">View MATLAB Code</button>
-        <div class="code-container" style="display: none;">
-          <pre><code>
-    % Placeholder for MATLAB code
-    % Actual code to be added later
-          </code></pre>
+      <div class="dual-code-section">
+        <div class="code-half">
+          <div class="code-container" data-language="matlab">
+            <div class="language-label">Torque Conroller Function</div>
+            <pre><code>function tau = torque_control(thetas, delta, reference, current_displacement)
+
+                disp('Delta:');
+                disp(delta(1));
+            
+                disp('Xe dYe dZe sim:');
+                disp(reference(1));
+                % disp(reference(2));
+                % disp(reference(3));
+            
+                disp('thetas:');
+                disp(thetas(1));
+                % disp(thetas(2));
+                % disp(thetas(3));
+            
+                disp('current_reference');
+                disp(current_displacement(1));
+                % disp(current_displacement(2));
+                % disp(current_displacement(3));
+            
+                la = 1;   % Length of link 1
+                lb = 0.2; % Length of link 2
+                lc = 1;   % Length of link 3
+            
+                base_radius = 0.08;  
+                base_length = 0.5;   
+                base_density = 1000; 
+            
+                joint2_radius = 0.1; 
+                joint2_length = 0.1; 
+                joint2_density = 1000;
+            
+                link1_width = la/12;  
+                link1_height = la/12; 
+                link1_length = la;    
+                link1_density = 2700;
+            
+                link2_radius = lb/3;  
+                link2_length = lb;    
+                link2_density = 2700;
+            
+                link3_width = lc/12;  
+                link3_height = lc/12; 
+                link3_length = lc;    
+                link3_density = 2700;
+            
+                ee_radius = 0.1;      
+                ee_density = 1000;    
+            
+                % Mass calculations
+                m_base = pi * base_radius^2 * base_length * base_density;
+                m_joint2 = pi * joint2_radius^2 * joint2_length * joint2_density;
+                m1 = link1_length * link1_width * link1_height * link1_density;
+                m2 = pi * link2_radius^2 * link2_length * link2_density;
+                m3 = link3_length * link3_width * link3_height * link3_density;
+                m_ee = (4/3) * pi * ee_radius^3 * ee_density;
+            
+                % Gravity
+                g = 9.81; % m/s^2
+            
+                % Joint angles
+                theta1 = thetas(1);
+                theta2 = thetas(2);
+                theta3 = thetas(3);
+            
+                % Precompute trig functions
+                S1 = sin(theta1); C1 = cos(theta1);
+                S2 = sin(theta2); C2 = cos(theta2);
+                S3 = sin(theta3); C3 = cos(theta3);
+                S12 = sin(theta1 + theta2); 
+                C12 = cos(theta1 + theta2);
+                S123 = sin(theta1 + theta2 + theta3); 
+                C123 = cos(theta1 + theta2 + theta3);
+            
+                % Homogeneous transformations
+                T01 = [C1, -S1, 0, 0;
+                      S1,  C1, 0, 0;
+                      0,   0,  1, 0;
+                      0,   0,  0, 1];
+                      
+                T12 = [C2, -S2, 0, 0;
+                      0,   0,  1, 0;
+                      -S2, -C2, 0, 0;
+                      0,   0,  0, 1];
+                      
+                T23 = [C3, -S3, 0, la;
+                      S3,  C3, 0, 0;
+                      0,   0,  1, 0;
+                      0,   0,  0, 1];
+            
+                T02 = T01 * T12;
+                T03 = T02 * T23;
+            
+                T34 = [1, 0, 0, lc;
+                      0, 1, 0, 0;
+                      0, 0, 1, lb;
+                      0, 0, 0, 1];
+                
+                T04 = T03 * T34;
+            
+                tau = zeros(3,1);
+          
+              end
+            </code></pre>
+          </div>
         </div>
+        <div class="code-half">
+          <div class="code-container" data-language="Python">
+            <div class="language-label">Manipulability Optimization for Inverse Kinematics Of 3R</div>
+            <pre><code>import numpy as np
+              from scipy.optimize import minimize
+              import matplotlib.pyplot as plt
+              
+              def manipulability(theta1, theta2, theta3):
+              
+                  if np.isnan(theta1) or np.isnan(theta2) or np.isnan(theta3):
+                      manipulability_index = 0
+                      return manipulability_index
+                  a1, a2, a3 = 0.2, 0.15, 0.12
+                  
+                  J11 = -a1*np.sin(theta1) - a2*np.sin(theta1+theta2) - a3*np.sin(theta1+theta2+theta3)
+                  J12 = -a2*np.sin(theta1+theta2) - a3*np.sin(theta1+theta2+theta3)
+                  J13 = -a3*np.sin(theta1+theta2+theta3)
+                  J21 = a1*np.cos(theta1) + a2*np.cos(theta1+theta2) + a3*np.cos(theta1+theta2+theta3)
+                  J22 = a2*np.cos(theta1+theta2) + a3*np.cos(theta1+theta2+theta3)
+                  J23 = a3*np.cos(theta1+theta2+theta3)
+                  
+                  J = np.array([[J11, J12, J13], [J21, J22, J23], [1, 1, 1]])
+                  
+                  JJT = J @ J.T  
+                  manipulability_index = np.sqrt(np.linalg.det(JJT))
+                  
+                  return manipulability_index
+              
+              def inversekinematics(thetaorientation, x, y, elbowup):
+                  a1, a2, a3 = 0.2, 0.15, 0.12
+              
+                  x3pos = x - a3*np.cos(thetaorientation)
+                  y3pos = y - a3*np.sin(thetaorientation)
+                  
+                  p13 = np.sqrt(x3pos**2 + y3pos**2)
+                  C2inv = (p13**2 - a1**2 - a2**2)/(2*a1*a2)
+                  
+                  C2 = C2inv
+                  
+                  theta2invp = np.arctan2(np.sqrt(1-((p13**2-a1**2-a2**2)/(2*a1*a2))**2), (p13**2-a1**2-a2**2)/(2*a1*a2))
+                  theta2invm = -np.arctan2(np.sqrt(1-((p13**2-a1**2-a2**2)/(2*a1*a2))**2), (p13**2-a1**2-a2**2)/(2*a1*a2))
+                  
+                  if elbowup:
+                      theta2inv = theta2invp  # choose one
+                  else:
+                      theta2inv = theta2invm
+              
+                  S2 = np.sin(theta2inv)
+                  
+                  A = np.array([[a1+a2*C2, -a2*S2], [a2*S2, a1+a2*C2]])
+                  b = np.array([x3pos, y3pos])
+                  tmp = np.linalg.inv(A).dot(b)
+                  
+                  theta1inv = np.arctan2(tmp[1], tmp[0])
+                  
+                  theta3inv = thetaorientation - theta1inv - theta2inv
+                  manipulability_score = manipulability(theta1inv, theta2inv, theta3inv)
+                  
+                  return theta1inv, theta2inv, theta3inv, manipulability_score
+              
+              def gradientdescent(x, y):
+                  best_cost = float('inf')
+                  best_result = None
+                  best_theta = None
+              
+                  for theta_init in np.linspace(0, 2*np.pi, 64, endpoint=False):
+                      res = minimize(
+                          lambda theta: -max(
+                              inversekinematics(theta[0], x, y, elbowup=True)[3],
+                              inversekinematics(theta[0], x, y, elbowup=False)[3]
+                          ),
+                          x0=[theta_init],
+                          bounds=[(0, 2 * np.pi)],
+                          method='L-BFGS-B'
+                      )
+                      
+                      if res.fun < best_cost:
+                          best_cost = res.fun
+                          best_theta = res.x[0]
+                          r1 = inversekinematics(best_theta, x, y, elbowup=True)
+                          r2 = inversekinematics(best_theta, x, y, elbowup=False)
+                          best_result = r1 if r1[3] > r2[3] else r2
+                  
+              
+                  return best_result + (best_theta,)
+              
+              
+              if __name__ == "__main__":
+                  xe = [.1,.2,.3,.4,.45]      
+                  ye = [0,0,0,0,0]       
+                  a1, a2, a3 = 0.2, 0.15, 0.12
+                  colors = plt.cm.tab10(np.linspace(0, 1, len(xe)))
+              
+                  plt.figure()
+                  for i, (x, y) in enumerate(zip(xe, ye)):
+                      theta1, theta2, theta3, m, best_thetaorientation = gradientdescent(x, y)
+                      print(f"x: {x:.2f}, y: {y:.2f} | θ1: {theta1*180/np.pi:.2f}, θ2: {theta2*180/np.pi:.2f}, θ3: {theta3*180/np.pi:.2f} | Manipulability: {m:.4f} at θ-orient: {best_thetaorientation:.4f} rad ")
+              
+                      x0, y0 = 0, 0
+                      x1 = a1 * np.cos(theta1)
+                      y1 = a1 * np.sin(theta1)
+                      x2 = x1 + a2 * np.cos(theta1 + theta2)
+                      y2 = y1 + a2 * np.sin(theta1 + theta2)
+                      x3 = x2 + a3 * np.cos(theta1 + theta2 + theta3)
+                      y3 = y2 + a3 * np.sin(theta1 + theta2 + theta3)
+              
+                      plt.plot([x0, x1, x2, x3], [y0, y1, y2, y3], 'o-', color=colors[i], label=f"Pose {i+1} (m={m:.5f})", linewidth=2)
+                      plt.plot(x, y, 'x', color=colors[i], markersize=10)
+              
+                  plt.title("All 5 Robot Poses with Target Points")
+                  plt.axis('equal')
+                  plt.grid(True)
+                  plt.legend()
+                  plt.xlabel("X position (m)")
+                  plt.ylabel("Y position (m)")
+                  plt.show()
+              
+                  x, y = 0.1, 0
+                  orientations = np.linspace(0, 2 * np.pi, 512)
+                  manipulabilities = []
+              
+                  for thetaorient in orientations:
+                      _, _, _, m_up = inversekinematics(thetaorient, x, y, elbowup=True)
+                      _, _, _, m_down = inversekinematics(thetaorient, x, y, elbowup=False)
+                      manipulabilities.append(-max(m_up, m_down))
+              
+                  plt.figure()
+                  plt.plot(orientations, manipulabilities, label='Max Manipulability')
+                  plt.xlabel("Orientation (rad)")
+                  plt.ylabel("Manipulability Index")
+                  plt.title("Manipulability vs Orientation at (0.1, 0)")
+                  plt.grid(True)
+                  plt.legend()
+                  plt.show()
+              
+                 
+            </code></pre>
+          </div>
+        </div>
+
+      </div>
+      
       </div>
     </div>
     </div>
