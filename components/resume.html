@@ -4,12 +4,23 @@
       <h2>My Resume</h2>
       <p>Check out my professional experience and qualifications, or download a copy for your reference.</p>
       
-      <div>
-        <a href="landing/assets/pdfs/ShubhRaval_Resume_2025.pdf" class="btn" download>Download Resume</a>
+      <!-- Resume Toggle Buttons -->
+      <div class="resume-toggle-buttons">
+        <button class="toggle-btn active" data-resume="hardware">Hardware</button>
+        <button class="toggle-btn" data-resume="robotics">Robotic Software</button>
+        <button class="toggle-btn" data-resume="project">Project Management</button>
+      </div>
+      
+      <!-- Action Buttons -->
+      <div class="resume-actions">
+        <a href="landing/assets/pdfs/ShubhRaval-Mechanical-7-25.pdf" class="btn" id="download-btn" download>Download Resume</a>
         <a href="contact/index.html" class="btn btn-secondary">Get In Touch</a>
       </div>
       
-      <iframe src="landing/assets/pdfs/ShubhRaval_Resume_2025.pdf" class="resume-preview"></iframe>
+      <iframe src="landing/assets/pdfs/ShubhRaval-Mechanical-7-25.pdf" 
+              class="resume-preview" 
+              id="resume-iframe"></iframe>
     </div>
   </div>
 </section>
+
