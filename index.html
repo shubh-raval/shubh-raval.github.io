@@ -7,15 +7,20 @@
   <title>Shubh Raval - Mechanical Engineer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" href="components/navbar.html" as="fetch" crossorigin>
+  <link rel="preload" href="components/hero.html" as="fetch" crossorigin>
+  <link rel="preload" href="styles/navbar.css" as="style">
+  <link rel="preload" href="styles/hero.css" as="style">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="preload" href="landing/assets/videos/machining.mov" as="video" type="video/mp4">
 </head>
 <body>
-  <!-- Main JavaScript to load components -->
-  <script src="js/main.js"></script>
-  <script src="js/sectionscrollhelper.js"></script>
+
 
   <!-- Navigation Bar -->
   <div id="nav-container"></div>
@@ -45,5 +50,8 @@
     contentPreloader.setupNavigationPreloading();
   });
   </script>
+  <!-- Main JavaScript to load components -->
+  <script src="js/main.js"></script>
+  <script src="js/sectionscrollhelper.js"></script>
 </body>
 </html>

@@ -40,18 +40,20 @@ document.addEventListener('DOMContentLoaded', function() {
   // Load CSS files
   loadStylesheet('styles/navbar.css');
   loadStylesheet('styles/hero.css');
-  loadStylesheet('styles/about.css');
-  loadStylesheet('styles/resume.css');
+
   
   // Load HTML components
   loadComponent('nav-container', 'components/navbar.html');
   loadComponent('hero-container', 'components/hero.html');
-  loadComponent('about-container', 'components/about.html');
-  loadComponent('resume-container', 'components/resume.html');
+
   // Ensure section scroll functionality runs after components load
   setTimeout(() => {
+    loadStylesheet('styles/about.css');
+    loadStylesheet('styles/resume.css');
+    loadComponent('about-container', 'components/about.html');
+    loadComponent('resume-container', 'components/resume.html');
     initSectionScroll();
-  }, 500); // Slight delay to ensure all elements exist
+  }, 100); // Slight delay to ensure all elements exist
 
 });
 // Resume toggle functionality
