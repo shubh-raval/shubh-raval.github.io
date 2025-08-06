@@ -158,3 +158,20 @@
     text-align: center;
   }
 }
+
+/* Mobile download fix */
+.btn[download] {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+@media screen and (max-width: 768px) {
+  .btn[download] {
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
