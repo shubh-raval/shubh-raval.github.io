@@ -49,14 +49,19 @@ document.addEventListener('DOMContentLoaded', function() {
   loadComponent('nav-container', 'components/navbar.html');
   loadComponent('hero-container', 'components/hero.html');
 
-  // Ensure section scroll functionality runs after components load
-  requestIdleCallback(() => {
+  const loadRemainingContent = () => {
     loadStylesheet('styles/about.css');
     loadStylesheet('styles/resume.css');
     loadComponent('about-container', 'components/about.html');
     loadComponent('resume-container', 'components/resume.html');
     initSectionScroll();
-  }, {timeout: 100}); // Slight delay to ensure all elements exist
+  };
+  
+  if (window.requestIdleCallback) {
+    requestIdleCallback(loadRemainingContent, {timeout: 100});
+  } else {
+    setTimeout(loadRemainingContent, 100);
+  }
 
 });
 // Resume toggle functionality
