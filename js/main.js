@@ -126,19 +126,18 @@ function initResumeToggle() {
 function initNavbar() {
   const navbar = document.getElementById('navbar');
   const menuToggle = document.getElementById('menu-toggle');
-  const navLinks = document.getElementById('nav-links');
+  const navLinks = document.querySelector('.nav-links');
+  const navItems = document.querySelectorAll('.nav-links a');
   let lastScrollTop = 0;
 
   // Navbar scroll effect
   window.addEventListener('scroll', function() {
-    // Add scrolled class when scrolled down
     if (window.scrollY > 50) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
     
-    // Hide nav on scroll down, show on scroll up
     let currentScroll = window.scrollY;
     if (currentScroll > lastScrollTop && currentScroll > 100) {
       navbar.classList.add('hidden');
@@ -154,6 +153,13 @@ function initNavbar() {
       navLinks.classList.toggle('active');
     });
   }
+
+  // Close menu on link click
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
 }
 
 // Scroll reveal animation
