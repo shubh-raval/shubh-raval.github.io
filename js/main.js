@@ -18,6 +18,9 @@ function loadComponent(elementId, componentPath) {
       if (elementId === 'resume-container') {
         initResumeToggle();
       }
+      if (elementId === 'hero-container') {
+        initVideoLoader();
+      }
       // Initialize reveal animations after all components are loaded
       revealOnScroll();
     })
@@ -167,6 +170,40 @@ function revealOnScroll() {
   window.addEventListener('scroll', checkReveal);
   // Initial check
   checkReveal();
+}
+function initVideoLoader() {
+  const video = document.querySelector('.video-background');
+  const poster = document.querySelector('.video-poster');
+  
+  if (video && poster) {
+    video.addEventListener('canplay', () => {
+      poster.classList.add('hidden');
+    });
+
+    // Start playing low-quality video
+    video.src = 'landing/assets/videos/machining-compressed.mp4';
+    video.load();
+    video.play();
+
+    // Preload high-quality video
+    preloadHighQualityVideo('landing/assets/videos/machining.mov', () => {
+      // Replace low-quality video with high-quality video
+      const currentTime = video.currentTime;
+      video.src = 'landing/assets/videos/machining.mov';
+      video.load();
+      video.currentTime = currentTime; // Maintain playback position
+      video.play();
+    });
+  }
+
+  function preloadHighQualityVideo(url, callback) {
+    const highQualityVideo = document.createElement('video');
+    highQualityVideo.src = url;
+    highQualityVideo.preload = 'auto';
+    highQualityVideo.oncanplaythrough = () => {
+      callback();
+    };
+  }
 }
 
 // Load section scrolling functionality script
