@@ -147,12 +147,45 @@ function initNavbar() {
     lastScrollTop = currentScroll;
   });
 
-  // Mobile menu toggle
   if (menuToggle) {
     menuToggle.addEventListener('click', function() {
       navLinks.classList.toggle('active');
+      document.body.classList.toggle('menu-open'); // Prevent body scroll
+      
+      // Add haptic feedback on mobile devices
+      if (navigator.vibrate) {
+        navigator.vibrate(50);
+      }
     });
   }
+  
+  // Enhanced close menu functionality
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      document.body.classList.remove('menu-open'); // Re-enable body scroll
+    });
+  });
+  
+  // Close menu when clicking outside (mobile)
+  document.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768 && 
+        !navbar.contains(e.target) && 
+        navLinks.classList.contains('active')) {
+      navLinks.classList.remove('active');
+      document.body.classList.remove('menu-open');
+    }
+  });
+  
+  // Close menu on escape key (mobile only)
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && 
+        window.innerWidth <= 768 && 
+        navLinks.classList.contains('active')) {
+      navLinks.classList.remove('active');
+      document.body.classList.remove('menu-open');
+    }
+  });
 
   // Close menu on link click
   navItems.forEach(item => {
